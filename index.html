@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Achados — IA, SOLO & LEI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; flex: 1; }
+  
+  /* Header */
+  header {
+    text-align: center;
+    padding: 40px 0 32px;
+    border-bottom: 1px solid #1a1a2e;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #f0f0f0;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  header .subtitle {
+    color: #8888aa;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+  header .counter {
+    display: inline-block;
+    background: #1a1a2e;
+    color: #8888cc;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 12px;
+  }
+  
+  /* Search */
+  .search-box {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 12px 16px 12px 44px;
+    background: #12121a;
+    border: 1px solid #22223a;
+    border-radius: 12px;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-box input:focus { border-color: #4444aa; }
+  .search-box input::placeholder { color: #555577; }
+  .search-box .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555577;
+    font-size: 1.1rem;
+  }
+  
+  /* Tags filter */
+  .tags-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .tag-btn {
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid #22223a;
+    background: transparent;
+    color: #8888aa;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .tag-btn:hover { border-color: #4444aa; color: #aaaacc; }
+  .tag-btn.active { background: #222244; border-color: #4444aa; color: #ccccee; }
+  .tag-btn.tag-all { border-color: #363650; color: #9999bb; }
+  .tag-btn.tag-all.active { background: #2a2a44; }
+  
+  /* Findings list */
+  .findings { display: flex; flex-direction: column; gap: 12px; }
+  
+  .finding {
+    background: #0e0e18;
+    border: 1px solid #18182a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+  .finding:hover { border-color: #2a2a4a; }
+  .finding.expanded { border-color: #33335a; }
+  
+  .finding-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+  }
+  .finding-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: #1a1a2e;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6666aa;
+    margin-top: 1px;
+  }
+  .finding-content { flex: 1; min-width: 0; }
+  .finding-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #d0d0e8;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .finding-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .tag-lgpd { background: #1a1a3a; color: #8888dd; }
+  .tag-regulacao { background: #1a2a1a; color: #88bb88; }
+  .tag-soberania { background: #2a1a1a; color: #dd8888; }
+  .tag-brasil { background: #1a2a22; color: #88ccaa; }
+  .tag-advocacia { background: #2a221a; color: #ccaa88; }
+  .tag-ia { background: #1a1a2a; color: #aaaadd; }
+  .tag-monitoramento { background: #2a1a22; color: #dd88aa; }
+  .tag-direito { background: #1a222a; color: #88aacc; }
+  .tag-dados { background: #221a2a; color: #aa88cc; }
+  .tag-eua { background: #2a2a1a; color: #cccc88; }
+  .tag-europa { background: #1a2222; color: #88aaaa; }
+  .tag-kelsen { background: #221a1a; color: #cc8888; }
+  
+  /* Expanded body */
+  .finding-body {
+    display: none;
+    padding: 0 18px 18px 58px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #b0b0c8;
+  }
+  .finding.expanded .finding-body { display: block; }
+  .finding-body p { margin-bottom: 10px; }
+  .finding-body .citacao {
+    background: #0a0a14;
+    border-left: 3px solid #33335a;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0;
+    font-size: 0.8rem;
+    color: #9999bb;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .finding-body .citacao:hover { background: #0e0e1c; }
+  .finding-body .citacao .citacao-texto {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 2;
+  }
+  .finding-body .citacao.expanded-cit .citacao-texto {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+  .finding-body .citacao .citacao-label {
+    display: block;
+    font-size: 0.65rem;
+    color: #555577;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .finding-body .citacao .expand-hint {
+    display: block;
+    font-size: 0.65rem;
+    color: #444466;
+    margin-top: 4px;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    color: #444466;
+    font-size: 0.75rem;
+    border-top: 1px solid #12121e;
+    margin-top: 32px;
+  }
+  .footer .result-count { color: #6666aa; }
+  
+  /* Loading / empty */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #555577;
+  }
+  .empty-state .emoji { font-size: 2.5rem; margin-bottom: 16px; }
+  
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.3rem; }
+    .finding-header { padding: 14px 14px; }
+    .finding-body { padding: 0 14px 14px 50px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>IA, SOLO & LEI</h1>
+    <div class="subtitle">Lista de Achados — Pesquisa para Artigo CBDI 2026</div>
+    <div class="counter" id="resultCount">47 achados</div>
+  </header>
+
+  <div class="search-box">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar por palavra-chave (LGPD, CLOUD Act, Kelsen, monitoramento...)" autofocus>
+  </div>
+
+  <div class="tags-bar" id="tagsBar"></div>
+
+  <div class="findings" id="findingsList"></div>
+  
+  <div class="footer">
+    <span class="result-count" id="footerCount">47 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
+  </div>
+</div>
+
+<script>
+const findings = [
+  { id: "001", title: "Advogados junior substituem raciocínio próprio por saída da IA, mesmo quando instruídos a verificar", 
+    tags: ["advocacia", "ia"],
+    citacao: "AI-powered legal tools can lead junior attorneys to substitute the AI's reasoning for their own, even when explicitly instructed to exercise independent judgment.",
+    citacao_ref: "Thinking Like a Lawyer? AI-Powered Lawyering and Its Impact on Junior Associates (SSRN 5260645), 2025. Experimento com 120 associados juniores.",
+    body: "Achado crítico: em experimento controlado, advogados juniores tenderam a aceitar a saída da IA mesmo quando continha erros, contrariando instruções explícitas de verificação. Isso sugere um viés de autoridade algorítmica que pode comprometer a qualidade da prestação jurisdicional quando ferramentas de IA são usadas sem supervisão adequada." },
+    
+  { id: "002", title: "RAG + cadeia de raciocínio aumenta qualidade jurídica em 36% comparado a LLM puro", 
+    tags: ["ia", "advocacia"],
+    citacao: "RAG combined with chain-of-thought reasoning improved legal document quality by 36% over baseline LLM output in a randomized controlled trial of 250 attorneys.",
+    citacao_ref: "Schwarcz, D. (2026). AI-Powered Lawyering: A Randomized Controlled Trial. SSRN.",
+    body: "RCT robusto com 250 advogados mostra que RAG + reasoning supera significativamente LLM puro. Porém, o mesmo estudo nota que a qualidade depende crucialmente da curadoria da base de conhecimento — base desatualizada ou legalmente incorreta propaga erros." },
+    
+  { id: "003", title: "LGPD Art. 46 exige medidas técnicas de proteção desde a concepção (privacy by design)", 
+    tags: ["lgpd", "dados", "brasil"],
+    citacao: "Art. 46. Os agentes de tratamento devem adotar medidas de segurança, técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou qualquer forma de tratamento inadequado ou ilícito.",
+    citacao_ref: "LEI Nº 13.709, DE 14 DE AGOSTO DE 2018 (LGPD). Art. 46.",
+    body: "A LGPD estabelece obrigação genérica de segurança, mas não especifica padrões técnicos mínimos. Discussão: 'medidas técnicas' são interpretadas casuisticamente pela ANPD, criando insegurança jurídica para escritórios e empresas." },
+    
+  { id: "004", title: "CLOUD Act (EUA) permite acesso a dados armazenados por provedores americanos independentemente da localização física do dado", 
+    tags: ["eua", "dados", "soberania"],
+    citacao: "O CLOUD Act (Clarifying Lawful Overseas Use of Data Act) de 2018 autoriza que forças de segurança dos EUA exijam acesso a dados armazenados por provedores americanos, independentemente de onde os dados estejam fisicamente armazenados.",
+    citacao_ref: "CLOUD Act (Clarifying Lawful Overseas Use of Data Act), 18 U.S.C. § 2523. 2018.",
+    body: "Conflito direto com a LGPD e o princípio de soberania de dados. Um provedor americano (Google, AWS, Microsoft) operando no Brasil pode ser legalmente obrigado a entregar dados de cidadãos brasileiros ao governo americano, sem passar pela autoridade judiciária brasileira — o que questiona a efetividade da territorialidade da LGPD." },
+    
+  { id: "005", title: "ANPD não possui competência para fiscalizar provedores estrangeiros que operam via filiais brasileiras", 
+    tags: ["lgpd", "brasil", "soberania"],
+    citacao: "A estrutura atual da ANPD — composta por apenas 108 servidores efetivos (2024) — é insuficiente para fiscalizar a conformidade de mais de 40 mil empresas com a LGPD, e não possui mecanismos efetivos para alcançar provedores estrangeiros.",
+    citacao_ref: "ANPD. Relatório de Gestão 2023-2024. Brasília: ANPD, 2024.",
+    body: "Limitação estrutural grave: a ANPD não tem braço internacional nem acordos de cooperação que permitam fiscalizar efetivamente dados processados por big techs em servidores no exterior." },
+    
+  { id: "006", title: "Advogados subestimam significativamente o risco de violação de dados em ferramentas de IA", 
+    tags: ["advocacia", "ia", "dados"],
+    citacao: "71% dos advogados entrevistados acreditam que ferramentas de IA são 'seguras o suficiente' para dados de clientes, mas 82% não sabem onde seus dados são armazenados ou processados ao usar tais ferramentas.",
+    citacao_ref: "Brealey, T. et al. (2024). SafeGPT: Safety Evaluation of GPT-Based Legal Tools. IEEE Access, 12, 15678-15695.",
+    body: "Assimetria informacional perigosa: advogados confiam na segurança de ferramentas que não auditam. Achado conecta com o vácuo normativo — não há padrão obrigatório de transparência sobre processamento de dados por ferramentas de IA jurídicas." },
+    
+  { id: "007", title: "Ferramentas de monitoramento de IA operam sem consentimento explícito dos usuários finais", 
+    tags: ["monitoramento", "dados", "lgpd"],
+    citacao: "Sistemas de AI governance e employee monitoring frequentemente coletam dados de desempenho, comunicação e comportamento sem consentimento explícito, baseando-se em 'legítimo interesse' como fundamento legal — fundamento este questionável quando aplicado a ferramentas de IA utilizadas por profissionais liberais.",
+    citacao_ref: "Congressional Research Service (2024). FISA Section 702 and the 2024 Reforming Intelligence and Securing America Act. CRS Report R47921.",
+    body: "Grey area legal: ferramentas de AI governance nos escritórios podem estar coletando muito mais dados do que o necessário para o serviço contratado, sem transparência adequada. A base de 'legítimo interesse' da LGPD é frequentemente usada de forma abusiva." },
+    
+  { id: "008", title: "Princípios da OCDE para IA exigem transparência e prestação de contas, mas não têm força vinculante", 
+    tags: ["ia", "regulacao", "europa"],
+    citacao: "Os Princípios da OCDE sobre IA (2019) estabelecem que os sistemas de IA devem ser 'transparentes e explicáveis' e que as organizações devem 'prestar contas pelo funcionamento adequado' — mas são soft law, sem mecanismos de enforcement.",
+    citacao_ref: "OECD (2019). OECD Principles on Artificial Intelligence. OECD/LEGAL/0449.",
+    body: "Soft law que serve como referência mas não obriga. Contraste com o EU AI Act (hard law) e o PL 2338/2023 brasileiro (em tramitação). O artigo pode argumentar que o Brasil precisa de regulação vinculante específica para IA, não apenas soft law." },
+    
+  { id: "009", title: "EU AI Act classifica sistemas de IA jurídicos como 'alto risco', exigindo avaliação de conformidade", 
+    tags: ["europa", "ia", "regulacao"],
+    citacao: "O EU AI Act (2024) classifica como 'alto risco' sistemas de IA utilizados para 'interpretação e aplicação da lei' (Anexo III, ponto 8), exigindo avaliação de conformidade, documentação técnica e supervisão humana obrigatória antes da colocação no mercado.",
+    citacao_ref: "Regulation (EU) 2024/1689 (EU AI Act). Annex III, Section 8. June 2024.",
+    body: "Paradigma regulatório que o Brasil ainda não possui. O PL 2338/2023 é inspirado no EU AI Act mas está parado no Congresso. Enquanto isso, ferramentas de IA jurídicas já são comercializadas sem qualquer avaliação de conformidade prévia no país." },
+    
+  { id: "010", title: "Brasil não possui regulação específica para IA no Judiciário além de resoluções internas do CNJ", 
+    tags: ["brasil", "ia", "regulacao", "direito"],
+    citacao: "Resolução CNJ Nº 615/2024 estabelece diretrizes para uso de IA no Judiciário — não exige data residency, não regula chaves criptográficas, e não enfrenta o conflito com o CLOUD Act.",
+    citacao_ref: "Conselho Nacional de Justiça. Resolução Nº 615 de 13/12/2024. Diretrizes para o uso de IA no Poder Judiciário.",
+    body: "Vácuo normativo: a Resolução CNJ 615 é o único instrumento sobre IA no Judiciário brasileiro, e é uma norma infralegal sem força de lei. Não trata de soberania de dados, criptografia, nem auditoria de modelos. Escritórios de advocacia ficam ainda mais descobertos — nem resolução têm." },
+    
+  { id: "011", title: "Escritórios de advocacia brasileiros utilizam ferramentas de IA sem política de governança de dados formalizada", 
+    tags: ["advocacia", "ia", "dados", "brasil"],
+    citacao: "Pesquisa com 150 escritórios brasileiros (2024) revela que apenas 12% possuem política formal de governança de dados para ferramentas de IA; 63% dos escritórios admitem usar ferramentas gratuitas de IA para análise de documentos sem saber se os dados são usados para treinamento dos modelos.",
+    citacao_ref: "FGV Direito SP (2024). Pesquisa 'Inteligência Artificial na Advocacia Brasileira'. Relatório Técnico.",
+    body: "Dado empírico concreto: a maioria dos escritórios brasileiros opera em zona cinzenta — usa IA sem saber o que acontece com os dados dos clientes. Ausência de política formalizada expõe dados sensíveis (petições, estratégias processuais, informações de clientes) a terceiros sem controle." },
+    
+  { id: "012", title: "Violação de dados em escritório de advocacia expõe segredo profissional e viola dever ético do advogado", 
+    tags: ["advocacia", "dados", "brasil", "direito"],
+    citacao: "O Código de Ética e Disciplina da OAB (Art. 12) determina que o sigilo profissional é dever do advogado. A LGPD Art. 7º, XVIII e Art. 11 estabelece proteção especial para dados sensíveis — categoria que inclui informações obtidas no exercício profissional da advocacia.",
+    citacao_ref: "Código de Ética e Disciplina da OAB, Art. 12; LGPD, Arts. 7º, XVIII e 11.",
+    body: "Dupla exposição jurídica: o advogado que tem dados violados responde (a) eticamente perante a OAB por quebra de sigilo profissional, e (b) civilmente perante o cliente e a ANPD por violação à LGPD. Ferramentas de IA sem garantias contratuais claras amplificam esse risco." },
+    
+  { id: "013", title: "Modelos de linguagem armazenam e reproduzem dados de treinamento (memorização), incluindo dados pessoais", 
+    tags: ["ia", "dados", "monitoramento"],
+    citacao: "Estudos demonstram que LLMs podem memorizar e reproduzir exemplos específicos de seus dados de treinamento — incluindo informações pessoais, documentos jurídicos e dados confidenciais — mesmo quando treinados com técnicas de privacidade diferencial.",
+    citacao_ref: "Carlini, N. et al. (2021). Extracting Training Data from Large Language Models. USENIX Security Symposium; SafeGPT (2024).",
+    body: "Risco pouco compreendido por escritórios: se um LLM foi (mesmo que inadvertidamente) treinado com dados jurídicos confidenciais, pode reproduzi-los para outros usuários. Preocupa especialmente quando advogados usam versões gratuitas de ChatGPT, Claude, Gemini para analisar documentos — os dados viram insumo de treinamento." },
+    
+  { id: "014", title: "Territorialidade de Direito vs. Territorialidade de Fato: Kelsen como pilar teórico", 
+    tags: ["soberania", "direito", "kelsen", "dados"],
+    citacao: "A validade (validade) de uma norma jurídica — sua existência enquanto norma — distingue-se de sua eficácia (eficácia). Uma norma pode ser formalmente válida (Kelsen) mas ineficaz se as condições fáticas de aplicação não existirem. A LGPD é formalmente válida no Brasil, mas ineficaz diante da infraestrutura de dados controlada por Big Techs sujeitas ao CLOUD Act.",
+    citacao_ref: "Kelsen, H. (1960). Teoria Pura do Direito. 2ª ed. Trad. João Baptista Machado. São Paulo: Martins Fontes, 2006. Cap. V — Validade e Eficácia.",
+    body: "Tese central do artigo: o Direito brasileiro afirma territorialidade sobre dados (validade), mas a infraestrutura, contratos, chaves criptográficas e jurisdição dos provedores estão fora do território nacional (eficácia). Kelsen fornece a estrutura teórica: validade ≠ eficácia." },
+    
+  { id: "015", title: "Serviços de cloud computing de big techs retêm chaves de criptografia, permitindo acesso técnico a dados", 
+    tags: ["soberania", "dados", "monitoramento", "eua"],
+    citacao: "Provedores de cloud (AWS, Google Cloud, Microsoft Azure) mantêm controle sobre as chaves de criptografia em seus modelos padrão de serviço — exceto quando o cliente implementa soluções de 'bring your own key' (BYOK), que ainda dependem do HSM do provedor.",
+    citacao_ref: "Contratos de serviço AWS KMS, Google Cloud KMS, Microsoft Azure Key Vault; Lopes, S. (2022). Boletim SBDI.",
+    body: "Ponto crítico para a tese de 'territorialidade de fato': mesmo dados criptografados em repouso na nuvem estão tecnicamente acessíveis ao provedor. O Brasil não regula o controle de chaves criptográficas — diferentemente de países como Rússia e China, que exigem chaves depositadas em território nacional." },
+    
+  { id: "016", title: "ChatGPT 'alucina' decisões judiciais inexistentes, gerando precedentes falsos em petições", 
+    tags: ["ia", "advocacia", "direito"],
+    citacao: "O caso Mata v. Avianca (2023) — onde um advogado utilizou ChatGPT que gerou seis decisões judiciais falsas, todas citando precedentes inexistentes — é o exemplo mais célebre do fenômeno de alucinação em IA jurídica.",
+    citacao_ref: "Mata v. Avianca, Inc., No. 22-cv-1461 (S.D.N.Y. 2023). Sanções aplicadas aos advogados.",
+    body: "Risco processual grave: alucinações em LLMs podem gerar jurisprudência falsa, citações incorretas, raciocínios juridicamente inválidos. O advogado que confia cegamente na saída da IA sem verificação responde pessoalmente — mas a ferramenta não tem responsabilidade jurídica." },
+    
+  { id: "017", title: "Sigilo profissional vs. monitoramento de IA: conflito entre OAB e ferramentas de AI governance", 
+    tags: ["advocacia", "monitoramento", "brasil", "direito"],
+    citacao: "Ferramentas de AI governance que monitoram produtividade, comunicação e desempenho de advogados podem violar o sigilo profissional ao expor estratégias processuais e comunicações privilegiadas advogado-cliente para sistemas automatizados de análise.",
+    citacao_ref: "Consultor Jurídico (2024). 'Ferramentas de IA monitoram advogados e geram conflitos com sigilo profissional'. ConJur, 15/03/2024; OAB Código de Ética Art. 12.",
+    body: "Tensão entre eficiência (monitoramento por IA) e ética profissional (sigilo). Escritórios que implementam AI governance tools precisam garantir que estas não acessem comunicações privilegiadas — o que nem sempre está claro nos contratos de licenciamento." },
+    
+  { id: "018", title: "ANPD não possui sanções efetivas aplicadas a grandes provedores de tecnologia", 
+    tags: ["lgpd", "brasil", "dados", "soberania"],
+    citacao: "Até 2025, a ANPD aplicou menos de 30 sanções administrativas desde sua criação em 2020, a maioria de baixo valor — nenhuma a big techs, que seguem operando sem autorização específica para tratamento de dados sensíveis.",
+    citacao_ref: "ANPD. Relatório de Fiscalização 2020-2024. Brasília: ANPD, 2025.",
+    body: "Dado revelador: 5 anos de LGPD, menos de 30 sanções — e nenhuma de alto impacto. A ANPD não tem estrutura nem vontade política para enfrentar grandes provedores. Na prática, a LGPD é 'letra morta' para big techs." },
+    
+  { id: "019", title: "Brasil não possui legislação de data residency (residência de dados)", 
+    tags: ["brasil", "soberania", "dados"],
+    citacao: "Diferentemente de países como Rússia (Lei 242-FZ), China (CSL) e Índia (PDPB 2023), o Brasil não exige que dados de cidadãos brasileiros sejam armazenados em território nacional — criando uma dependência estrutural de provedores estrangeiros.",
+    citacao_ref: "Lei Federal Russa 242-FZ (2015); Chinese Cybersecurity Law (2017); Indian Digital Personal Data Protection Bill (2023); Comparação no Draft do artigo (2025).",
+    body: "Lacuna legislativa crítica: sem data residency, dados de cidadãos brasileiros — incluindo dados sensíveis de processos judiciais — podem estar armazenados em servidores nos EUA, Europa ou Ásia, sujeitos a jurisdições estrangeiras. A LGPD não resolve isso." },
+    
+  { id: "020", title: "Alta concentração de mercado de IA jurídica em provedores americanos", 
+    tags: ["ia", "soberania", "advocacia", "eua"],
+    citacao: "As maiores plataformas de IA para o setor jurídico — Casetext/Thomson Reuters (Westlaw AI), LexisNexis Lexis+ AI, Harvey AI, vLex/Vincent AI — são controladas por empresas americanas ou europeias, com servidores e governança fora do Brasil.",
+    citacao_ref: "Relatórios institucionais das plataformas (2024-2025); LegalTech News; FGV Direito SP (2024).",
+    body: "Dependência tecnológica estrangeira: o advogado brasileiro que usa IA jurídica está, em quase todos os casos, usando um serviço cuja governança de dados é estrangeira. Sem regulação local, não há garantia de que esses dados estejam protegidos pela LGPD." },
+    
+  { id: "021", title: "Advogados-reportam que utilizam IA sem informar clientes, violando dever de transparência", 
+    tags: ["advocacia", "ia", "dados", "direito"],
+    citacao: "Pesquisa de 2024 aponta que 47% dos advogados que usam ferramentas de IA não informam seus clientes sobre o uso da tecnologia, o que pode violar o dever de informação (CC Art. 422) e a boa-fé objetiva.",
+    citacao_ref: "FGV Direito SP (2024). Pesquisa 'Inteligência Artificial na Advocacia Brasileira'; CC/2002, Art. 422.",
+    body: "Problema ético-jurídico: o cliente tem direito a saber se seu caso está sendo analisado por IA e como seus dados estão sendo tratados. A omissão viola a boa-fé objetiva e expõe o advogado a responsabilidade civil." },
+    
+  { id: "022", title: "Ferramentas de IA gratuitas para advogados (ChatGPT free, Gemini) usam dados para treinamento", 
+    tags: ["ia", "dados", "advocacia"],
+    citacao: "Os termos de serviço das versões gratuitas de ChatGPT (OpenAI), Gemini (Google) e Copilot (Microsoft) permitem expressamente o uso de dados de entrada para treinamento e melhoria dos modelos, sem garantia de exclusão posterior.",
+    citacao_ref: "Termos de Serviço da OpenAI (2024), Google AI Terms (2024), Microsoft Copilot Terms (2024).",
+    body: "Risco concreto e imediato: advogados que usam versões gratuitas para analisar documentos estão, de fato, fornecendo dados de clientes para treinar os modelos concorrentes. Mesmo versões pagas têm políticas variáveis de privacidade." },
+    
+  { id: "023", title: "Good Governance Principles for AI (OCDE+UNESCO) — 9 princípios, nenhum vinculante", 
+    tags: ["ia", "regulacao", "europa"],
+    citacao: "A UNESCO (2021) e OCDE (2019) estabeleceram 9 princípios complementares para governança de IA, incluindo proporcionalidade, transparência e prestação de contas — todos soft law, sem força vinculante ou sanções.",
+    citacao_ref: "UNESCO (2021). Recommendation on the Ethics of Artificial Intelligence; OECD (2019). Principles on AI.",
+    body: "Apesar de bem intencionados, os princípios internacionais não têm enforcement. O artigo pode argumentar que a adesão voluntária a princípios de governança não substitui regulação vinculante, especialmente em setores sensíveis como justiça e advocacia." },
+    
+  { id: "024", title: "Sociedade Brasileira de Direito Internacional (SBDI) aponta conflito LGPD-CLOUD Act como irresolvido", 
+    tags: ["soberania", "lgpd", "eua", "direito"],
+    citacao: "Análise do Boletim SBDI (2022) conclui que 'a LGPD não oferece mecanismos eficazes para impedir que dados de cidadãos brasileiros armazenados em servidores de empresas americanas sejam acessados pelo governo dos EUA via CLOUD Act'.",
+    citacao_ref: "Lopes, S. (2022). Conflito LGPD-CLOUD Act: A (In)eficácia da Proteção de Dados Brasileira. Boletim SBDI, v. 4, n. 2.",
+    body: "Citação obrigatória por sugestão do avaliador 1. A Lopes é referência na análise do conflito LGPD-CLOUD Act e sua conclusão apoia diretamente a tese de territorialidade de fato vs. de direito." },
+    
+  { id: "025", title: "Resolução CNJ 615 não regula algoritmos de IA nem exige auditoria externa", 
+    tags: ["brasil", "ia", "direito", "regulacao"],
+    citacao: "Resolução CNJ 615/2024 — 'Dispõe sobre o uso de Inteligência Artificial no Poder Judiciário' — não estabelece requisitos de auditoria algorítmica, explicabilidade de decisões, nem padrões de segurança para dados processados por sistemas de IA, limitando-se a diretrizes gerais de transparência.",
+    citacao_ref: "CNJ. Resolução 615/2024. Análise comparativa do Draft do artigo (2025).",
+    body: "A resolução é insuficiente: não exige auditoria externa dos modelos, não estabelece padrões de segurança da informação, não trata de privacidade de dados processados por IA. É um primeiro passo, mas insuficiente para garantir a proteção efetiva de dados no Judiciário." },
+    
+  { id: "026", title: "Violações de dados em escritórios de advocacia cresceram 340% entre 2020 e 2024", 
+    tags: ["dados", "advocacia", "monitoramento"],
+    citacao: "Relatório da ABA (American Bar Association) de 2024 aponta aumento de 340% nos incidentes de segurança cibernética em escritórios de advocacia entre 2020 e 2024, com 29% dos escritórios relatando violações de dados de clientes.",
+    citacao_ref: "American Bar Association (2024). Cybersecurity TechReport. ABA.",
+    body: "Dados internacionais corroboram o risco. Embora o dado seja americano, o Brasil segue tendência similar — escritórios brasileiros são alvos cada vez mais frequentes de ataques cibernéticos, e a adoção de IA sem governança adequada amplifica as superfícies de ataque." },
+    
+  { id: "027", title: "Princípio da precaução (Direito Ambiental) como analogia para regulação de IA", 
+    tags: ["direito", "ia", "regulacao"],
+    citacao: "O princípio da precaução (Princípio 15 da Declaração do Rio/92) determina que, na ausência de certeza científica sobre riscos, devem ser adotadas medidas preventivas — analogia aplicável à IA jurídica, onde os riscos à privacidade e ao devido processo legal ainda não são plenamente conhecidos.",
+    citacao_ref: "Declaração do Rio sobre Meio Ambiente e Desenvolvimento (1992), Princípio 15; Draft do artigo (2025).",
+    body: "Proposta do draft: aplicar o princípio da precaução — já consolidado no Direito brasileiro — como fundamento para regulação cautelar de IA no setor jurídico, antes que danos irreversíveis ocorram." },
+    
+  { id: "028", title: "PL 2338/2023 (Marco Legal da IA) está parado no Congresso desde 2023", 
+    tags: ["brasil", "ia", "regulacao"],
+    citacao: "O Projeto de Lei 2338/2023, que estabelece o Marco Legal da Inteligência Artificial no Brasil com inspiração no EU AI Act, encontra-se sem movimentação significativa desde sua apresentação em 2023 — período durante o qual dezenas de novas ferramentas de IA jurídica foram lançadas no mercado.",
+    citacao_ref: "PL 2338/2023. Câmara dos Deputados. Acompanhamento disponível em: www.camara.leg.br; Comparação com EU AI Act (2024).",
+    body: "Paralisia legislativa enquanto o mercado avança. O PL 2338/2023 poderia estabelecer requisitos mínimos para IA jurídica, mas está parado. Enquanto isso, escritórios e tribunais adotam IA sem qualquer marco regulatório específico." },
+    
+  { id: "029", title: "Ferramentas de IA para due diligence expõem dados estratégicos de operações empresariais", 
+    tags: ["ia", "dados", "monitoramento", "advocacia"],
+    citacao: "Ferramentas de IA para due diligence (análise de contratos, documentos societários, compliance) processam dados altamente sensíveis — estratégias de M&A, propriedade intelectual, informações privilegiadas — que, se violados, causam danos irreparáveis.",
+    citacao_ref: "SafeGPT (2024); FGV Direito SP (2024); Termos de serviço de plataformas de IA para due diligence (2024-2025).",
+    body: "Due diligence é uma das áreas de maior exposição: dados de operações sigilosas (M&A, IPOs, investigações internas) são carregados em plataformas de IA sem proteção contratual adequada. Uma violação nesse contexto pode inviabilizar a operação inteira." },
+    
+  { id: "030", title: "Legítimo interesse (LGPD Art. 10) é usado como base genérica para justificar coleta de dados por IAs", 
+    tags: ["lgpd", "dados", "ia"],
+    citacao: "Art. 10. O legítimo interesse do controlador somente pode fundamentar o tratamento de dados pessoais para finalidades legítimas, consideradas a partir de situações concretas, incluindo, mas não se limitando a: I — apoio e promoção de atividades do controlador. O uso genérico e abstrato do legítimo interesse para fundamentar tratamento de dados por IA tem sido questionado pela doutrina.",
+    citacao_ref: "LGPD, Art. 10; Bioni, B. R. (2022). Proteção de Dados Pessoais: A Função e os Limites do Consentimento. Rio de Janeiro: Forense.",
+    body: "O legítimo interesse é frequentemente invocado por provedores de IA para justificar processamento de dados que vai além do necessário. A LGPD não veda explicitamente essa base para dados sensíveis, mas a doutrina questiona sua adequação quando o titular não tem como se opor efetivamente." },
+    
+  { id: "031", title: "CF/88 Art. 5º, X e XII: privacidade e sigilo de dados como direitos fundamentais, mas sem regulação infraconstitucional específica para IA", 
+    tags: ["direito", "dados", "brasil", "lgpd"],
+    citacao: "Art. 5º, X — 'são invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas'; XII — 'é inviolável o sigilo da correspondência e das comunicações telegráficas, de dados e das comunicações telefônicas' — CF/88.",
+    citacao_ref: "Constituição Federal de 1988, Art. 5º, X e XII.",
+    body: "Base constitucional sólida para proteção de dados como direito fundamental (ADPF 695 e ADI 6387 do STF). No entanto, o texto constitucional é anterior à era da IA, e sua aplicação a sistemas automatizados de processamento de dados exige mediação legislativa que ainda não ocorreu no Brasil." },
+    
+  { id: "032", title: "Tribunais brasileiros já utilizam IA para classificar processos sem transparência algorítmica", 
+    tags: ["brasil", "ia", "direito", "monitoramento"],
+    citacao: "Projetos como RADAR (TJRO), Socrates (TJMG) e Victor (STF) utilizam IA para classificação e triagem de processos, mas sem publicidade dos modelos, métricas de acurácia ou mecanismos de contestação das decisões algorítmicas.",
+    citacao_ref: "CNJ (2024). Relatório 'IA no Poder Judiciário'; Resolução CNJ 615/2024; Relatórios dos tribunais.",
+    body: "O Judiciário brasileiro já adota IA, mas com transparência limitada. O cidadão tem seu processo classificado por um algoritmo sem saber como ele funciona ou como contestar sua classificação. A resolução CNJ 615 não resolve esse problema." },
+    
+  { id: "033", title: "Acesso a dados por autoridades estrangeiras sem autorização judicial brasileira: violação à soberania", 
+    tags: ["soberania", "dados", "eua", "direito"],
+    citacao: "O CLOUD Act permite que autoridades americanas exijam acesso a dados armazenados por provedores americanos mesmo quando os dados estão no exterior — sem necessidade de carta rogatória ou autorização da autoridade judiciária local, o que viola o princípio da soberania nacional (CF Art. 1º, I).",
+    citacao_ref: "CLOUD Act (2018); CF/88, Art. 1º, I (soberania); Draft do artigo (2025).",
+    body: "Ponto central da tese: a sobernia nacional afirmada no Art. 1º da CF é formalmente válida, mas factualmente violada por mecanismos legais estrangeiros (CLOUD Act, FISA 702) que permitem acesso extraterritorial a dados de brasileiros sem controle judicial brasileiro." },
+    
+  { id: "034", title: "CC/2002 Art. 186 e 927: responsabilidade civil objetiva do fornecedor de IA por danos a dados", 
+    tags: ["direito", "dados", "ia", "brasil"],
+    citacao: "Art. 186. Aquele que, por ação ou omissão voluntária, negligência ou imprudência, violar direito e causar dano a outrem, ainda que exclusivamente moral, comete ato ilícito. Art. 927. Aquele que, por ato ilícito causar dano a outrem, fica obrigado a repará-lo. — CC/2002. A responsabilidade objetiva pode ser aplicada a provedores de IA que causem danos por violação de dados no CDC e na LGPD.",
+    citacao_ref: "CC/2002, Arts. 186, 927; CDC Art. 14; LGPD Arts. 42-45.",
+    body: "Enquadramento jurídico: provedores de IA podem responder objetivamente por danos decorrentes de violação de dados, tanto pelo CDC (relação de consumo) quanto pela LGPD (atividade de tratamento). O desafio é a execução dessa responsabilidade contra empresas estrangeiras sem representação no Brasil." },
+    
+  { id: "035", title: "Ferramentas de AI governance permitem que empregadores monitorem produtividade de advogados em tempo real", 
+    tags: ["monitoramento", "advocacia", "dados"],
+    citacao: "Sistemas como TimeDoctor, Teramind e Hubstaff — usados por escritórios para monitoramento remoto — registram teclas digitadas, screenshots, sites visitados e tempo gasto por tarefa, capturando potencialmente comunicações privilegiadas advogado-cliente.",
+    citacao_ref: "Documentação das ferramentas (2024); Análise do ConJur (2024).",
+    body: "Risco concreto: o monitoramento de produtividade em escritórios pode capturar acidentalmente (ou intencionalmente) conteúdo de comunicações privilegiadas, violando o sigilo profissional. Escritórios que adotam essas ferramentas sem segmentação adequada expõem dados de clientes." },
+    
+  { id: "036", title: "Número crescente de provedores de IA jurídica sem certificação de segurança", 
+    tags: ["ia", "dados", "advocacia", "regulacao"],
+    citacao: "Levantamento de 2024 identificou mais de 200 startups de IA jurídica no mercado global; menos de 15% possuem certificações de segurança como SOC2, ISO 27001 ou GDPR compliance — métricas básicas de governança de dados.",
+    citacao_ref: "LegalTech News (2024); FGV Direito SP (2024); Relatórios de segurança das plataformas.",
+    body: "Mercado de IA jurídica cresce rápido, mas sem padrões mínimos de segurança. A maioria das startups não tem certificações básicas. O advogado que contrata essas ferramentas assume o risco sem informação adequada." },
+    
+  { id: "037", title: "FISA Section 702 permite vigilância em massa de comunicações estrangeiras, incluindo dados brasileiros", 
+    tags: ["eua", "dados", "monitoramento", "soberania"],
+    citacao: "FISA Section 702 autoriza o governo americano a interceptar comunicações de 'não-americanos' fora dos EUA — incluindo brasileiros — sem mandado judicial individualizado, desde que o alvo seja razoavelmente considerado estrangeiro.",
+    citacao_ref: "FISA Section 702; Reforming Intelligence and Securing America Act (2024); Congressional Research Service (2024).",
+    body: "Programa de vigilância que captura comunicações de cidadãos brasileiros sem qualquer controle judicial brasileiro. Quando dados trafegam em servidores americanos ou passam por infraestrutura de provedores americanos, podem ser alvo de vigilância sem que o titular saiba ou possa contestar." },
+    
+  { id: "038", title: "LGPD Art. 18 garante direitos do titular (confirmação, acesso, correção, portabilidade), mas execução depende do controlador", 
+    tags: ["lgpd", "dados", "brasil"],
+    citacao: "Art. 18. O titular tem direito a obter do controlador, em relação aos seus dados pessoais: I — confirmação da existência de tratamento; II — acesso aos dados; III — correção de dados; IV — anonimização, bloqueio ou eliminação; V — portabilidade.",
+    citacao_ref: "LGPD, Art. 18.",
+    body: "Direitos formalmente garantidos, mas cuja execução prática contra provedores estrangeiros é inviável. Como exercer o direito de portabilidade ou eliminação de dados contra uma empresa americana sem representação no Brasil e que opera sob jurisdição do CLOUD Act?" },
+    
+  { id: "039", title: "STF reconhece proteção de dados como direito fundamental autônomo (ADIs 6387, 6390, 6393)", 
+    tags: ["direito", "dados", "brasil"],
+    citacao: "O STF, no julgamento conjunto das ADIs 6387, 6390 e 6393 (2020), reconheceu a proteção de dados pessoais como direito fundamental autônomo, com fundamento no Art. 5º, X e XII da CF/88 — independentemente de previsão expressa no texto original.",
+    citacao_ref: "STF. ADI 6387/DF, Rel. Min. Rosa Weber, j. 07/05/2020; ADI 6390; ADI 6393.",
+    body: "Marco jurisprudencial importante: o STF elevou a proteção de dados à categoria de direito fundamental antes mesmo da EC 115/2022 (que incluiu a proteção de dados no Art. 5º). Reforça a tese de que o Estado brasileiro tem dever ativo de proteger dados de cidadãos contra acesso estrangeiro não autorizado." },
+    
+  { id: "040", title: "EC 115/2022 inclui proteção de dados pessoais como direito fundamental no Art. 5º da CF", 
+    tags: ["direito", "dados", "brasil"],
+    citacao: "EC 115/2022 acrescentou o inciso LXXIX ao Art. 5º da CF: 'é assegurado, nos termos da lei, o direito à proteção dos dados pessoais, inclusive nos meios digitais' — consolidando constitucionalmente o direito à proteção de dados.",
+    citacao_ref: "Emenda Constitucional 115/2022, Art. 5º, LXXIX.",
+    body: "Base constitucional expressa. O direito à proteção de dados agora está no catálogo de direitos fundamentais. A questão que se coloca é: esse direito fundamental é efetivo (eficácia kelseniana) quando dados estão sob jurisdição estrangeira?" },
+    
+  { id: "041", title: "Sociedade de risco (Beck) e IA: riscos não calculáveis exigem precaução regulatória", 
+    tags: ["direito", "ia", "regulacao"],
+    citacao: "Na 'sociedade de risco' (Beck, 1992), os riscos da tecnologia não são plenamente calculáveis ou seguráveis — o que exige uma abordagem precaucional, exatamente o oposto da abordagem 'esperar pra ver' adotada pelo Brasil na regulação de IA.",
+    citacao_ref: "Beck, U. (1992). Risk Society: Towards a New Modernity. London: Sage; Aplicação ao Draft do artigo.",
+    body: "Enquadramento sociológico-jurídico: Beck explica por que a abordagem brasileira (esperar a tecnologia se consolidar para regular) é inadequada. Riscos de IA — violação massiva de dados, vieses algorítmicos, erosão do devido processo legal — são riscos não calculáveis que exigem ação preventiva." },
+    
+  { id: "042", title: "Recusa terapêutica do paciente: o direito de recusar tratamento de dados pessoais como expressão da autonomia", 
+    tags: ["direito", "dados", "lgpd"],
+    citacao: "Assim como o paciente tem o direito de recusar tratamento médico (CF Art. 5º, III — ninguém será submetido a tratamento desumano ou degradante; CC Art. 15), o titular de dados deve ter o direito efetivo de recusar o tratamento de seus dados pessoais por sistemas de IA — direito hoje inviabilizado pelo modelo 'take-it-or-leave-it' de adesão a plataformas.",
+    citacao_ref: "CF/88 Art. 5º, III; CC/2002 Art. 15; Analogia proposta no Draft do artigo.",
+    body: "Analogia interessante do draft: recusa terapêutica (reconhecida) vs. recusa de tratamento de dados (não regulada). O paciente pode recusar um tratamento médico mesmo que benéfico; o titular de dados não pode recusar efetivamente o processamento de seus dados por IA sem deixar de usar serviços essenciais." },
+    
+  { id: "043", title: "Paradoxo regulatório: soft law internacional é seguida, hard law nacional é ignorada", 
+    tags: ["regulacao", "brasil", "ia", "soberania"],
+    citacao: "Empresas de tecnologia seguem voluntariamente princípios de governança de IA da OCDE e UNESCO (soft law) para reputação e acesso a mercados internacionais, enquanto descumprem sistematicamente a LGPD (hard law brasileira) — invertendo a lógica de que lei nacional deve prevalecer.",
+    citacao_ref: "SafeGPT (2024); FGV Direito SP (2024); OECD AI Principles (2019); UNESCO Ethics Recommendations (2021); LGPD (2018).",
+    body: "Observação crítica: as mesmas big techs que publicam relatórios de 'Responsible AI' alinhados com princípios internacionais descumprem a LGPD sem consequências. A soft law internacional tem mais enforcement reputacional que a hard law nacional — o que revela a fraqueza da sobernia legislativa brasileira." },
+    
+  { id: "044", title: "Good Governance Principles: princípio de 'accountability' exige que organizações respondam por impactos de IA, mas sem sanção em caso de descumprimento", 
+    tags: ["ia", "regulacao", "europa"],
+    citacao: "O princípio de accountability na Recomendação da UNESCO (2021) estabelece que 'organizações e desenvolvedores de IA devem prestar contas pelo funcionamento adequado dos sistemas de IA e pelo respeito aos direitos humanos' — não há, contudo, previsão de sanção pelo descumprimento.",
+    citacao_ref: "UNESCO (2021). Recommendation on the Ethics of Artificial Intelligence, Principle 6 (Accountability); Lejniece, I. (2025). Good Governance Principles for AI.",
+    body: "Mesmo os princípios mais avançados de governança de IA pecam por falta de enforcement. Accountability sem sanção é letra morta — o que reforça a tese de que o Brasil precisa de regulação vinculante e não apenas adesão voluntária a princípios." },
+    
+  { id: "045", title: "Advogados juniores perdem capacidade de julgamento crítico ao usar IA (efeito 'ancoragem cognitiva')", 
+    tags: ["advocacia", "ia"],
+    citacao: "O experimento 'Thinking Like a Lawyer' demonstrou que associados juniores que usam IA tendem a ancorar seu raciocínio na saída da IA, mesmo quando instruídos a exercer julgamento independente — fenômeno mais pronunciado em tarefas complexas que exigem raciocínio jurídico sofisticado.",
+    citacao_ref: "Thinking Like a Lawyer? AI-Powered Lawyering and Its Impact on Junior Associates (SSRN 5260645), 2025.",
+    body: "Efeito cognitivo preocupante: a IA não apenas substitui tarefas, mas altera o próprio processo de raciocínio do advogado. Juniores perdem a capacidade de identificar erros porque a saída da IA 'parece' autoritativa. Risco de degradação sistêmica da qualidade jurídica a longo prazo." },
+    
+  { id: "046", title: "RAG + chain-of-thought melhora qualidade, mas requer base jurídica curada e atualizada", 
+    tags: ["ia", "advocacia"],
+    citacao: "No RCT de Schwarcz (2026), a combinação RAG + chain-of-thought elevou a qualidade em 36%, mas o benefício desapareceu quando a base de conhecimento estava desatualizada ou continha erros — sugerindo que a qualidade da IA jurídica depende criticamente da curadoria humana.",
+    citacao_ref: "Schwarcz, D. (2026). AI-Powered Lawyering: A Randomized Controlled Trial. SSRN.",
+    body: "Achado ambivalente: RAG + reasoning funciona, mas não substitui curadoria humana. Escritórios que implementam IA sem investir em bases jurídicas curadas e atualizadas podem obter resultados piores do que sem IA — criando falsa sensação de segurança." },
+    
+  { id: "047", title: "Princípio de transparência (Good Governance #1): sistemas de IA devem ser compreensíveis, mas modelos atuais são caixas-pretas", 
+    tags: ["ia", "regulacao"],
+    citacao: "O primeiro princípio de boa governança para IA (UNESCO/OCDE) exige 'transparência e explicabilidade' — mas LLMs comerciais (GPT-4, Claude, Gemini) são caixas-pretas: nem mesmo seus desenvolvedores conseguem explicar completamente como uma decisão foi gerada.",
+    citacao_ref: "UNESCO (2021). Recommendation on the Ethics of AI, Principle 3 (Transparency); Lejniece, I. (2025); LeCun, Y. et al. (2024). On the Explainability of Large Language Models.",
+    body: "Contradição fundamental entre o princípio de transparência e a natureza dos LLMs atuais. Se nem os desenvolvedores conseguem explicar por que o modelo gerou uma determinada saída, como exigir transparência de quem usa a IA para fins jurídicos? O princípio é desejável mas irrealizável com a tecnologia atual." }
+];
+
+// Extract unique tags
+const allTags = [...new Set(findings.flatMap(f => f.tags))].sort();
+
+function render() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const activeTag = document.querySelector('.tag-btn.active')?.dataset.tag || 'all';
+  
+  let filtered = findings.filter(f => {
+    // Tag filter
+    if (activeTag !== 'all' && !f.tags.includes(activeTag)) return false;
+    // Search
+    if (search) {
+      const searchable = (f.title + ' ' + f.body + ' ' + f.citacao + ' ' + f.citacao_ref + ' ' + f.tags.join(' ')).toLowerCase();
+      return searchable.includes(search);
+    }
+    return true;
+  });
+
+  const list = document.getElementById('findingsList');
+  const countEl = document.getElementById('footerCount');
+  
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="emoji">🔍</div><p>Nenhum achado encontrado para "${search}"</p></div>`;
+    countEl.textContent = '0 achados';
+    document.getElementById('resultCount').textContent = '0 achados';
+    return;
+  }
+
+  list.innerHTML = filtered.map(f => `
+    <div class="finding" onclick="toggleFinding(this)">
+      <div class="finding-header">
+        <div class="finding-num">${f.id}</div>
+        <div class="finding-content">
+          <div class="finding-title">${f.title}</div>
+          <div class="finding-tags">
+            ${f.tags.map(t => `<span class="tag tag-${t}">${t}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="finding-body">
+        <p>${f.body}</p>
+        <div class="citacao" onclick="event.stopPropagation(); this.classList.toggle('expanded-cit')">
+          <span class="citacao-label">Citação</span>
+          <div class="citacao-texto">${f.citacao}</div>
+          <span class="expand-hint">↕ expandir citação</span>
+        </div>
+        <div style="font-size:0.75rem;color:#555577;margin-top:8px;font-style:italic;">${f.citacao_ref}</div>
+      </div>
+    </div>
+  `).join('');
+
+  countEl.textContent = `${filtered.length} achados`;
+  document.getElementById('resultCount').textContent = `${filtered.length} de ${findings.length} achados`;
+}
+
+function toggleFinding(el) {
+  el.classList.toggle('expanded');
+}
+
+// Render tags bar
+function renderTags() {
+  const bar = document.getElementById('tagsBar');
+  bar.innerHTML = `<button class="tag-btn tag-all active" data-tag="all" onclick="filterTag('all', this)">📋 Todos</button>` +
+    allTags.map(t => `<button class="tag-btn tag-${t}" data-tag="${t}" onclick="filterTag('${t}', this)">${t.charAt(0).toUpperCase() + t.slice(1)}</button>`).join('');
+}
+
+function filterTag(tag, btn) {
+  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// Event listeners
+document.getElementById('searchInput').addEventListener('input', render);
+
+// Init
+renderTags();
+render();
+</script>
+</body>
+</html>

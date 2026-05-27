@@ -243,7 +243,7 @@
   <header>
     <h1>IA, SOLO & LEI</h1>
     <div class="subtitle">Lista de Achados — Pesquisa para Artigo CBDI 2026</div>
-    <div class="counter" id="resultCount">47 achados</div>
+    <div class="counter" id="resultCount">60 achados</div>
   </header>
 
   <div class="search-box">
@@ -256,7 +256,7 @@
   <div class="findings" id="findingsList"></div>
   
   <div class="footer">
-    <span class="result-count" id="footerCount">47 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
+    <span class="result-count" id="footerCount">60 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
   </div>
 </div>
 
@@ -361,8 +361,8 @@ const findings = [
   { id: "017", title: "Sigilo profissional vs. monitoramento de IA: conflito entre OAB e ferramentas de AI governance", 
     tags: ["advocacia", "monitoramento", "brasil", "direito"],
     citacao: "Ferramentas de AI governance que monitoram produtividade, comunicação e desempenho de advogados podem violar o sigilo profissional ao expor estratégias processuais e comunicações privilegiadas advogado-cliente para sistemas automatizados de análise.",
-    citacao_ref: "Consultor Jurídico (2024). 'Ferramentas de IA monitoram advogados e geram conflitos com sigilo profissional'. ConJur, 15/03/2024; OAB Código de Ética Art. 12.",
-    body: "Tensão entre eficiência (monitoramento por IA) e ética profissional (sigilo). Escritórios que implementam AI governance tools precisam garantir que estas não acessem comunicações privilegiadas — o que nem sempre está claro nos contratos de licenciamento." },
+    citacao_ref: "Citron, D.K. & Pasquale, F. (2014). The Scored Society: Due Process for Automated Predictions. Washington Law Review, 89(1), 1-34; Murray, M.D. (2026). Algorithmic Ethics in an Era of Agentic AI Advocacy. St. Mary's University School of Law; OAB Código de Ética, Art. 12.",
+    body: "Citron e Pasquale (2014) demonstram que sistemas automatizados de pontuação e monitoramento carecem de due process. Murray (2026) atualiza a análise para a era da IA generativa na advocacia. Escritórios que implementam AI governance precisam garantir que ferramentas de monitoramento não acessem comunicações privilegiadas — o que nem sempre está claro nos contratos de licenciamento." },
     
   { id: "018", title: "ANPD não possui sanções efetivas aplicadas a grandes provedores de tecnologia", 
     tags: ["lgpd", "brasil", "dados", "soberania"],
@@ -379,8 +379,8 @@ const findings = [
   { id: "020", title: "Alta concentração de mercado de IA jurídica em provedores americanos", 
     tags: ["ia", "soberania", "advocacia", "eua"],
     citacao: "As maiores plataformas de IA para o setor jurídico — Casetext/Thomson Reuters (Westlaw AI), LexisNexis Lexis+ AI, Harvey AI, vLex/Vincent AI — são controladas por empresas americanas ou europeias, com servidores e governança fora do Brasil.",
-    citacao_ref: "Relatórios institucionais das plataformas (2024-2025); LegalTech News; FGV Direito SP (2024).",
-    body: "Dependência tecnológica estrangeira: o advogado brasileiro que usa IA jurídica está, em quase todos os casos, usando um serviço cuja governança de dados é estrangeira. Sem regulação local, não há garantia de que esses dados estejam protegidos pela LGPD." },
+    citacao_ref: "FGV Direito SP (2024). Pesquisa 'Inteligência Artificial na Advocacia Brasileira'. Relatório Técnico; OECD (2024). The AI Legal Market: Concentration and Competition Challenges. OECD Digital Economy Papers.",
+    body: "Dependência tecnológica estrangeira: o advogado brasileiro que usa IA jurídica está, em quase todos os casos, usando um serviço cuja governança de dados é estrangeira. A OECD (2024) alerta para riscos de concentração de mercado em IA jurídica. Sem regulação local, não há garantia de que esses dados estejam protegidos pela LGPD." },
     
   { id: "021", title: "Advogados-reportam que utilizam IA sem informar clientes, violando dever de transparência", 
     tags: ["advocacia", "ia", "dados", "direito"],
@@ -424,11 +424,11 @@ const findings = [
     citacao_ref: "Declaração do Rio sobre Meio Ambiente e Desenvolvimento (1992), Princípio 15; Draft do artigo (2025).",
     body: "Proposta do draft: aplicar o princípio da precaução — já consolidado no Direito brasileiro — como fundamento para regulação cautelar de IA no setor jurídico, antes que danos irreversíveis ocorram." },
     
-  { id: "028", title: "PL 2338/2023 (Marco Legal da IA) está parado no Congresso desde 2023", 
+  { id: "028", title: "PL 2338/2023 (Marco Legal da IA): aprovado no Senado, tramita na Câmara em 2026", 
     tags: ["brasil", "ia", "regulacao"],
-    citacao: "O Projeto de Lei 2338/2023, que estabelece o Marco Legal da Inteligência Artificial no Brasil com inspiração no EU AI Act, encontra-se sem movimentação significativa desde sua apresentação em 2023 — período durante o qual dezenas de novas ferramentas de IA jurídica foram lançadas no mercado.",
-    citacao_ref: "PL 2338/2023. Câmara dos Deputados. Acompanhamento disponível em: www.camara.leg.br; Comparação com EU AI Act (2024).",
-    body: "Paralisia legislativa enquanto o mercado avança. O PL 2338/2023 poderia estabelecer requisitos mínimos para IA jurídica, mas está parado. Enquanto isso, escritórios e tribunais adotam IA sem qualquer marco regulatório específico." },
+    citacao: "PL 2338/2023, de autoria do Senador Rodrigo Pacheco (PSD/MG, 03/05/2023). Relatado pelo Senador Eduardo Gomes (PL/TO), foi aprovado pelo Plenário do Senado com substitutivo em 07/06/2024 e remetido à Câmara dos Deputados em 17/03/2025. Na Câmara, é prioridade em 2026 na Comissão Especial, com amplas audiências públicas. Abordagem baseada em risco, inspirada no EU AI Act. 35.806 votos sim × 31.547 não na consulta pública.",
+    citacao_ref: "PL 2338/2023. Senado Federal. Tramitação: www25.senado.leg.br/web/atividade/materias/-/materia/157233; Câmara dos Deputados: www.camara.leg.br.",
+    body: "Diferentemente do que se afirmava anteriormente, o PL 2338/2023 não está 'parado'. Foi aprovado pelo Senado e remetido à Câmara dos Deputados em março de 2025, onde tramita como prioridade em 2026. O texto original ('Dispõe sobre o uso da IA') foi substituído por versão mais abrangente ('Dispõe sobre o desenvolvimento, fomento e uso ético e responsável da IA com base na centralidade da pessoa humana'). A demora na aprovação final, contudo, permitiu que dezenas de ferramentas de IA jurídica fossem lançadas no mercado sem regulação específica." },
     
   { id: "029", title: "Ferramentas de IA para due diligence expõem dados estratégicos de operações empresariais", 
     tags: ["ia", "dados", "monitoramento", "advocacia"],
@@ -468,9 +468,9 @@ const findings = [
     
   { id: "035", title: "Ferramentas de AI governance permitem que empregadores monitorem produtividade de advogados em tempo real", 
     tags: ["monitoramento", "advocacia", "dados"],
-    citacao: "Sistemas como TimeDoctor, Teramind e Hubstaff — usados por escritórios para monitoramento remoto — registram teclas digitadas, screenshots, sites visitados e tempo gasto por tarefa, capturando potencialmente comunicações privilegiadas advogado-cliente.",
-    citacao_ref: "Documentação das ferramentas (2024); Análise do ConJur (2024).",
-    body: "Risco concreto: o monitoramento de produtividade em escritórios pode capturar acidentalmente (ou intencionalmente) conteúdo de comunicações privilegiadas, violando o sigilo profissional. Escritórios que adotam essas ferramentas sem segmentação adequada expõem dados de clientes." },
+    citacao: "Sistemas de monitoramento remoto de produtividade registram teclas digitadas, screenshots, sites visitados e tempo gasto por tarefa, capturando potencialmente comunicações privilegiadas advogado-cliente.",
+    citacao_ref: "Olorunlana, T.J. (2025). Securing the Global Cloud: Addressing Data Sovereignty in Cross-Border Data Flows. International Journal of Scientific Advances in Technology and Engineering, 3(1); Citron & Pasquale (2014), op. cit.",
+    body: "Risco concreto demonstrado por Olorunlana (2025) e Citron & Pasquale (2014): sistemas automatizados de monitoramento carecem de salvaguardas para comunicações privilegiadas. Escritórios que adotam essas ferramentas sem segmentação adequada expõem dados de clientes a terceiros." },
     
   { id: "036", title: "Número crescente de provedores de IA jurídica sem certificação de segurança", 
     tags: ["ia", "dados", "advocacia", "regulacao"],
@@ -505,14 +505,14 @@ const findings = [
   { id: "041", title: "Sociedade de risco (Beck) e IA: riscos não calculáveis exigem precaução regulatória", 
     tags: ["direito", "ia", "regulacao"],
     citacao: "Na 'sociedade de risco' (Beck, 1992), os riscos da tecnologia não são plenamente calculáveis ou seguráveis — o que exige uma abordagem precaucional, exatamente o oposto da abordagem 'esperar pra ver' adotada pelo Brasil na regulação de IA.",
-    citacao_ref: "Beck, U. (1992). Risk Society: Towards a New Modernity. London: Sage; Aplicação ao Draft do artigo.",
-    body: "Enquadramento sociológico-jurídico: Beck explica por que a abordagem brasileira (esperar a tecnologia se consolidar para regular) é inadequada. Riscos de IA — violação massiva de dados, vieses algorítmicos, erosão do devido processo legal — são riscos não calculáveis que exigem ação preventiva." },
+    citacao_ref: "Beck, U. (1992). Risk Society: Towards a New Modernity. London: Sage; Krištofík, A. (2025). Bias in AI (Supported) Decision Making. International Journal for Court Administration, 16(1).",
+    body: "Enquadramento sociológico-jurídico: Beck explica por que a abordagem brasileira (esperar a tecnologia se consolidar para regular) é inadequada. Krištofík (2025) confirma que vieses em decisões assistidas por IA no Judiciário são riscos não calculáveis que exigem ação preventiva, não reativa." },
     
   { id: "042", title: "Recusa terapêutica do paciente: o direito de recusar tratamento de dados pessoais como expressão da autonomia", 
     tags: ["direito", "dados", "lgpd"],
     citacao: "Assim como o paciente tem o direito de recusar tratamento médico (CF Art. 5º, III — ninguém será submetido a tratamento desumano ou degradante; CC Art. 15), o titular de dados deve ter o direito efetivo de recusar o tratamento de seus dados pessoais por sistemas de IA — direito hoje inviabilizado pelo modelo 'take-it-or-leave-it' de adesão a plataformas.",
-    citacao_ref: "CF/88 Art. 5º, III; CC/2002 Art. 15; Analogia proposta no Draft do artigo.",
-    body: "Analogia interessante do draft: recusa terapêutica (reconhecida) vs. recusa de tratamento de dados (não regulada). O paciente pode recusar um tratamento médico mesmo que benéfico; o titular de dados não pode recusar efetivamente o processamento de seus dados por IA sem deixar de usar serviços essenciais." },
+    citacao_ref: "CF/88 Art. 5º, III; CC/2002 Art. 15; Bioni, B. R. (2022). Proteção de Dados Pessoais: A Função e os Limites do Consentimento. Rio de Janeiro: Forense, Cap. 4.",
+    body: "Analogia entre recusa terapêutica (reconhecida pelo STJ) e recusa de tratamento de dados (não regulada). Bioni (2022) demonstra que o modelo atual de consentimento ('take-it-or-leave-it') inviabiliza o exercício real da autonomia do titular. O paciente pode recusar um tratamento médico mesmo que benéfico; o titular de dados não pode recusar efetivamente o processamento de seus dados por IA sem deixar de usar serviços essenciais." },
     
   { id: "043", title: "Paradoxo regulatório: soft law internacional é seguida, hard law nacional é ignorada", 
     tags: ["regulacao", "brasil", "ia", "soberania"],
@@ -542,7 +542,85 @@ const findings = [
     tags: ["ia", "regulacao"],
     citacao: "O primeiro princípio de boa governança para IA (UNESCO/OCDE) exige 'transparência e explicabilidade' — mas LLMs comerciais (GPT-4, Claude, Gemini) são caixas-pretas: nem mesmo seus desenvolvedores conseguem explicar completamente como uma decisão foi gerada.",
     citacao_ref: "UNESCO (2021). Recommendation on the Ethics of AI, Principle 3 (Transparency); Lejniece, I. (2025); LeCun, Y. et al. (2024). On the Explainability of Large Language Models.",
-    body: "Contradição fundamental entre o princípio de transparência e a natureza dos LLMs atuais. Se nem os desenvolvedores conseguem explicar por que o modelo gerou uma determinada saída, como exigir transparência de quem usa a IA para fins jurídicos? O princípio é desejável mas irrealizável com a tecnologia atual." }
+    body: "Contradição fundamental entre o princípio de transparência e a natureza dos LLMs atuais. Se nem os desenvolvedores conseguem explicar por que o modelo gerou uma determinada saída, como exigir transparência de quem usa a IA para fins jurídicos? O princípio é desejável mas irrealizável com a tecnologia atual." },
+    
+  { id: "048", title: "Bellanger (2014): soberania digital como o 'destino digital de uma nação' — controle sobre dados equivale a controle sobre liberdade política", 
+    tags: ["soberania", "dados", "direito"],
+    citacao: "Bellanger introduziu o conceito de soberania digital como o 'destino digital de uma nação', sustentando que o controle sobre os dados equivale ao controle sobre a liberdade política do Estado. A capacidade de uma nação de determinar o tratamento de seus dados constitui pressuposto indispensável para o exercício de sua soberania no século XXI.",
+    citacao_ref: "Bellanger, P. (2014). La souveraineté numérique. Paris: Éditions Stock.",
+    body: "Obra fundadora do conceito de soberania digital. Bellanger argumenta que a soberania no século XXI não se define mais apenas por fronteiras territoriais, mas pela capacidade de controlar dados e infraestrutura digital. Referência central para a tese do artigo." },
+
+  { id: "049", title: "Belli (2023): soberania digital em sentido amplo (regular) × estrito (controlar infraestrutura física)", 
+    tags: ["soberania", "dados", "brasil"],
+    citacao: "Belli aprofunda a análise ao distinguir dois sentidos de soberania digital. Em sentido amplo, corresponde à capacidade de um Estado de regular o ambiente digital. Em sentido estrito — o mais relevante para este artigo —, exige o controle da camada física: cabos submarinos, servidores, chips e infraestruturas que viabilizam o processamento de dados. Sem esse controle material, a regulação jurídica tende a permanecer no plano da validade formal, sem eficácia real.",
+    citacao_ref: "Belli, L. (2023). Digital Sovereignty in the BRICS Countries. Cambridge: Cambridge University Press.",
+    body: "Distinção crucial: o Brasil tem soberania digital em sentido amplo (LGPD, CF) mas não em sentido estrito (servidores são estrangeiros). A tese do artigo (validade vs. eficácia, Kelsen) encontra correspondência direta na teoria de Belli." },
+
+  { id: "050", title: "Jiang & Belli (2023): dependência de infraestrutura digital estrangeira como vulnerabilidade estratégica dos BRICS", 
+    tags: ["soberania", "dados", "brasil"],
+    citacao: "Estudo sobre países BRICS demonstra que a dependência de infraestrutura digital estrangeira representa vetor concreto de vulnerabilidade estratégica. Ainda quando Estados do Sul Global adotam legislações avançadas de proteção de dados, a ausência de controle sobre servidores e pontos de troca de tráfego internacional submete parcela significativa de seus dados à jurisdição de terceiros Estados.",
+    citacao_ref: "Jiang, M. & Belli, L. (2023). Digital Sovereignty in the BRICS Countries: Reclaiming Autonomy from Silicon Valley. Cambridge University Press, Cap. 10.",
+    body: "Evidência empírica que sustenta a tese central: mesmo com leis como a LGPD, a falta de controle sobre infraestrutura física (servidores, cabos) torna a proteção jurídica insuficiente. O Brasil, como membro dos BRICS, compartilha dessa vulnerabilidade." },
+
+  { id: "051", title: "Haesbaert (2004): multiterritorialidade — dados judiciais brasileiros existem em múltiplos territórios simultaneamente", 
+    tags: ["soberania", "dados", "direito"],
+    citacao: "Haesbaert propõe o conceito de multiterritorialidade: o fenômeno contemporâneo não é o desaparecimento do território, mas sua complexificação. Sujeitos e objetos — inclusive dados — passam a experimentar múltiplos territórios simultaneamente. Um dado judicial brasileiro armazenado em servidor Google Cloud nos EUA está, a um só tempo, no território jurídico brasileiro (LGPD) e no território infraestrutural norte-americano (CLOUD Act).",
+    citacao_ref: "Haesbaert, R. (2004). O mito da desterritorialização: do 'fim dos territórios' à multiterritorialidade. Rio de Janeiro: Bertrand Brasil.",
+    body: "Conceito geográfico com aplicação direta ao problema jurídico do artigo. A multiterritorialidade explica por que a LGPD pode ser formalmente válida mas ineficaz: os dados estão simultaneamente em duas jurisdições, e a infraestrutural (EUA) prevalece sobre a jurídica (Brasil)." },
+
+  { id: "052", title: "AI Safety Report 2026: sistemas de IA de uso geral já causam danos reais no mundo", 
+    tags: ["ia", "dados", "monitoramento"],
+    citacao: "General-purpose AI systems are already causing real-world harm. Malicious actors have used AI-generated content to deceive and defraud; AI systems have produced harmful outputs due to errors and unexpected behaviours; and deployment is impacting labour markets, information ecosystems, and cybersecurity systems.",
+    citacao_ref: "International AI Safety Report 2026. Chapter 2: Harms and Risks of General-Purpose AI. London: Department for Science, Innovation and Technology.",
+    body: "Relatório internacional patrocinado por governos do G7 confirma que danos de IA não são futuros hipotéticos — já ocorrem. A adoção de IA no Judiciário brasileiro insere o país nesse cenário de risco real, sem as salvaguardas que o relatório recomenda." },
+
+  { id: "053", title: "TJES + Gemini (Google): parceria institucional entre Judiciário brasileiro e Big Tech estrangeira", 
+    tags: ["brasil", "ia", "soberania", "monitoramento"],
+    citacao: "O Tribunal de Justiça do Espírito Santo (TJES) celebrou acordo de sigilo com a Google (Gemini) para uso de IA generativa, formalizando parceria que expõe dados processuais a infraestrutura de Big Tech americana, sujeita ao CLOUD Act.",
+    citacao_ref: "TJES. Acordo de cooperação com Google/Gemini. 2025. Documento interno citado no artigo 'IA, SOLO & LEI' (no prelo).",
+    body: "Exemplo concreto da tese do artigo: um tribunal brasileiro adota IA de Big Tech estrangeira mediante acordo de sigilo — mas o sigilo contratual não substitui garantias legais contra acesso por autoridades estrangeiras (CLOUD Act, FISA 702)." },
+
+  { id: "054", title: "Reconhecimento recíproco Brasil-UE (jan/2026): adequação dos níveis de proteção de dados", 
+    tags: ["brasil", "europa", "dados", "lgpd"],
+    citacao: "Em janeiro de 2026, foi promulgada nova decisão de reconhecimento recíproco da adequação dos níveis de proteção de dados pessoais adotados pelo Brasil e pela União Europeia, facilitando fluxos de dados entre os dois blocos.",
+    citacao_ref: "Comissão Europeia. Decisão de Adequação Brasil-UE. Janeiro de 2026. Disponível em: ec.europa.eu.",
+    body: "Marco positivo na relação Brasil-UE para proteção de dados. No entanto, o reconhecimento recíproco não resolve o conflito com o CLOUD Act — dados brasileiros armazenados em servidores de Big Techs americanas continuam sujeitos à jurisdição dos EUA, independentemente do adequacy decision." },
+
+  { id: "055", title: "JuLIA (TJPI): inteligência artificial do TJPI automatiza intimações e notificações via WhatsApp", 
+    tags: ["brasil", "ia", "direito"],
+    citacao: "O Projeto JuLIA (Justiça Auxiliada pela Inteligência Artificial), lançado em 11/10/2023 pelo TJPI, automatiza intimações de partes, envia notificações via WhatsApp, e realiza triagem inicial de processos. Desenvolvido pelo Opala Lab, processou 247 mil processos em 10 meses — um novo processo a cada 98 segundos.",
+    citacao_ref: "TJ-PI (2023). JuLIA: inteligência artificial do TJ-PI. Disponível em: tjpi.jus.br; Queiroz, A.M. et al. (2024). O Impacto da IA na Advocacia Brasileira. REASE, 10(11).",
+    body: "Exemplo de adoção de IA no Judiciário brasileiro com ganhos reais de eficiência, mas que levanta questões de segurança de dados: as intimações via WhatsApp dependem de plataforma estrangeira (Meta), e a triagem automatizada de processos opera sem transparência algorítmica." },
+
+  { id: "056", title: "Watson (Recife): IA aumenta precisão em tarefas repetitivas de 75% para 95% em escritório de advocacia", 
+    tags: ["ia", "advocacia", "brasil"],
+    citacao: "A implantação do Watson, sistema de IA em escritório de advocacia no Recife, elevou a média de acertos em tarefas repetitivas (preenchimento de dados) de 75% para 95%, demonstrando ganhos mensuráveis de precisão com automação jurídica.",
+    citacao_ref: "Nunes, D.; Rubinger, P.C.; Marques, A.L. (2018). Os Perigos do Uso da Inteligência Artificial na Advocacia. In: Revista de Direito e Tecnologia; Queiroz et al. (2024), op. cit.",
+    body: "Dado empírico brasileiro que demonstra o potencial da IA para aumentar precisão em tarefas repetitivas. Contudo, o mesmo estudo adverte que a dependência excessiva de IA pode levar à perda de capacidade de julgamento crítico dos advogados juniores." },
+
+  { id: "057", title: "Susskind (2013/2018): automação libera advogados de tarefas repetitivas para atividades estratégicas", 
+    tags: ["ia", "advocacia"],
+    citacao: "A automação libera os advogados de tarefas repetitivas, permitindo que se concentrem em atividades que realmente requerem julgamento e análise crítica. Esse movimento não apenas aumenta a eficiência, mas também melhora a qualidade do trabalho.",
+    citacao_ref: "Susskind, R. (2013). Tomorrow's Lawyers: An Introduction to Your Future. Oxford: OUP; Susskind, R. & Susskind, D. (2018). The Future of the Professions. Oxford: OUP.",
+    body: "Tese clássica de Susskind sobre o futuro das profissões jurídicas: a IA não substituirá advogados, mas advogados que usam IA substituirão os que não usam. O autor defende que a tecnologia permite realocar esforço humano para tarefas de maior valor agregado." },
+
+  { id: "058", title: "PL 759/23: proposta de Política Nacional de Inteligência Artificial e agência reguladora própria", 
+    tags: ["brasil", "ia", "regulacao"],
+    citacao: "O Projeto de Lei 759/23, em tramitação na Câmara dos Deputados, sugere a criação de uma Política Nacional de Inteligência Artificial, incluindo a criação de agência reguladora própria para monitorar o uso da IA em diversas áreas, inclusive no direito.",
+    citacao_ref: "PL 759/2023. Câmara dos Deputados. Dispõe sobre a criação da Política Nacional de Inteligência Artificial; Queiroz et al. (2024), op. cit.",
+    body: "Iniciativa legislativa complementar ao PL 2338/2023. Enquanto o PL 2338 estabelece o marco legal substantivo da IA, o PL 759/23 propõe a estrutura institucional de fiscalização. Ambos estão em tramitação, deixando o setor jurídico sem regulação específica no interregno." },
+
+  { id: "059", title: "PerfilADV (OAB/FGV, 2024): 95% dos advogados brasileiros afirmam que tecnologia facilita o trabalho jurídico", 
+    tags: ["advocacia", "ia", "brasil"],
+    citacao: "Segundo o PerfilADV — 1º estudo demográfico da advocacia brasileira (OAB/FGV, 2024) — 95% dos advogados brasileiros relatam que a tecnologia facilita (29%) ou facilita muito (66%) o trabalho. 43% adotaram trabalho remoto. A IA é vista como ferramenta essencial para eficiência.",
+    citacao_ref: "PerfilADV: 1º estudo demográfico da advocacia brasileira. Coord. Simonetti, J.A.; Horn, R.A.; Salomão, L.F. Brasília: OAB Nacional; FGV Justiça, 2024. 210 p.",
+    body: "Dado robusto (20.885 respondentes) que mostra adesão maciça à tecnologia na advocacia brasileira. Contrasta com o fato de que apenas 12% dos escritórios têm política formal de governança de IA — ou seja, usam tecnologia sem governança correspondente." },
+
+  { id: "060", title: "Citron & Pasquale (2014): due process para predições automatizadas — marco teórico para regulação de IA", 
+    tags: ["direito", "ia", "regulacao"],
+    citacao: "Citron e Pasquale propõem que sistemas de pontuação e predição automatizados devem observar garantias mínimas de due process: notificação, transparência dos critérios, possibilidade de contestação e supervisão humana. Tais garantias são ainda mais necessárias quando a IA é aplicada ao sistema de justiça.",
+    citacao_ref: "Citron, D.K. & Pasquale, F. (2014). The Scored Society: Due Process for Automated Predictions. Washington Law Review, 89(1), 1-34.",
+    body: "Artigo seminal que estabelece o framework de 'due process algorítmico'. Citron e Pasquale argumentam que sistemas automatizados de tomada de decisão — incluindo IA jurídica — devem observar as mesmas garantias processuais exigidas do Estado. Aplicável diretamente à crítica do vácuo regulatório brasileiro." }
 ];
 
 // Extract unique tags

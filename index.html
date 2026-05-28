@@ -243,7 +243,7 @@
   <header>
     <h1>IA, SOLO & LEI</h1>
     <div class="subtitle">Lista de Achados — Pesquisa para Artigo CBDI 2026</div>
-    <div class="counter" id="resultCount">71 achados</div>
+    <div class="counter" id="resultCount">65 achados</div>
   </header>
 
   <div class="search-box">
@@ -256,7 +256,7 @@
   <div class="findings" id="findingsList"></div>
   
   <div class="footer">
-    <span class="result-count" id="footerCount">71 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
+    <span class="result-count" id="footerCount">65 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
   </div>
 </div>
 
@@ -622,71 +622,35 @@ const findings = [
     citacao_ref: "Citron, D.K. & Pasquale, F. (2014). The Scored Society: Due Process for Automated Predictions. Washington Law Review, 89(1), 1-34.",
     body: "Artigo seminal que estabelece o framework de 'due process algorítmico'. Citron e Pasquale argumentam que sistemas automatizados de tomada de decisão — incluindo IA jurídica — devem observar as mesmas garantias processuais exigidas do Estado. Aplicável diretamente à crítica do vácuo regulatório brasileiro." },
 
-  { id: "061", title: "Spyropoulos & Androulaki (2023): justiça preditiva e limitações do ML para decidir casos judiciais", 
+  { id: "061", title: "Spyropoulos & Androulaki (2023): African-Americans receberam grau de reincidência duas vezes maior no sistema COMPAS — viés algorítmico não intencional", 
     tags: ["ia", "direito", "europa"],
-    citacao: "No estágio atual de evolução do machine learning, a dedução de resultados confiáveis quanto à 'predição' de decisões judiciais não é possível. Além disso, pesquisa mostrou que indivíduos afro-americanos receberam grau de reincidência duas vezes maior que outros grupos populacionais no sistema COMPAS — sem que esse resultado tivesse sido intencionado pelos designers.",
-    citacao_ref: "Spyropoulos, F., & Androulaki, E. (2023). Aspects of Artificial Intelligence on E-Justice and Personal Data Limitations. Journal of Legal, Ethical and Regulatory Issues, 26(3), 1-8.",
-    body: "Artigo acadêmico que examina aplicações de IA em sistemas judiciais: classificação de contratos, resolução online de disputas (ODR), chatbots para apoio a litigantes e justiça preditiva. Conclui que o ML atual não é confiável para predizer decisões judiciais e documenta o viés racial do sistema COMPAS. Também discute o direito de não estar sujeito a decisões automatizadas (GDPR Art. 22)." },
+    citacao: "'The research showed that African-American individuals were attributed a degree of relapsing twice as high as other groups of the population, within a period of time of two years from imposition of sentence, without this result having been intended by the designers.' Os autores também concluem que 'at the present phase of evolution of machine learning techniques, the deduction of reliable results as to the prediction of court decisions is not possible' e que, nos termos do art. 22 do GDPR, 'persons concerned can deny a decision which is exclusively based on automated processing'.",
+    citacao_ref: "Spyropoulos, F.; Androulaki, E. Aspects of Artificial Intelligence on E-Justice and Personal Data Limitations. Journal of Legal, Ethical and Regulatory Issues, v. 26, n. 3, p. 1-8, 2023.",
+    body: "Artigo examina aplicações de IA em sistemas judiciais (justiça preditiva, ODR, chatbots). Um ponto central: o sistema COMPAS (EUA) atribuiu grau de reincidência duas vezes maior a afro-americanos sem que os designers tivessem intencionado — demonstrando que viés algorítmico pode ser não intencional e indetectável pelos criadores. O artigo também aponta que o ML atual não é confiável para predizer decisões judiciais." },
 
-  { id: "062", title: "Syllos (2024): LGPD brasileira é ambígua quanto à responsabilização de sistemas de IA; EUA possuem mosaico regulatório fragmentado", 
+  { id: "062", title: "Syllos (2024): LGPD é ambígua para responsabilizar ML; EUA têm mosaico fragmentado sem lei federal", 
     tags: ["dados", "lgpd", "eua", "regulacao"],
-    citacao: "No Brasil, a LGPD define parâmetros para coleta, tratamento e finalidade, mas permanece ambígua quanto ao escopo da responsabilização aplicada a sistemas de aprendizado de máquina que operam com bases complexas e processos inferenciais autônomos. Modelos treinados com dados pessoais continuam suscetíveis à memorização involuntária, reidentificação e impactos desiguais sobre grupos vulneráveis.",
-    citacao_ref: "Syllos, W.A.V. (2024). Interação entre Inteligência Artificial e Proteção de Dados: Regimes de Responsabilização no Brasil e nos Estados Unidos para Modelos Treinados com Dados Pessoais. Tese/Dissertação.",
-    body: "Análise comparativa Brasil vs. EUA: LGPD é ambígua sobre responsabilização de ML, enquanto os EUA carecem de lei federal abrangente. Syllos documenta casos de discriminação algorítmica (Clearview AI, Amazon, Cambridge Analytica) e propõe framework de governança, auditoria e compliance para organizações que utilizam IA em contextos sensíveis." },
+    citacao: "'No Brasil, a LGPD define parâmetros para coleta, tratamento e finalidade, mas permanece ambígua quanto ao escopo da responsabilização aplicada a sistemas de aprendizado de máquina que operam com bases complexas e processos inferenciais autônomos. Nos Estados Unidos, a ausência de uma lei federal abrangente acentua esse cenário, criando um mosaico regulatório fragmentado sustentado por legislações estaduais, diretrizes setoriais e enforcement por agências como a Federal Trade Commission.' A autora também afirma que 'modelos treinados com dados pessoais continuam suscetíveis à memorização involuntária, reidentificação e impactos desiguais sobre grupos vulneráveis'.",
+    citacao_ref: "Syllos, W.A.V. Interação entre Inteligência Artificial e Proteção de Dados: Regimes de Responsabilização no Brasil e nos Estados Unidos para Modelos Treinados com Dados Pessoais. 2024.",
+    body: "Análise comparativa Brasil vs. EUA. Syllos documenta casos de discriminação algorítmica (Clearview AI, Amazon, Cambridge Analytica, OpenAI) e propõe framework de governança, auditoria e compliance. Cita Ohm (2019): 'as tecnologias de análise massiva de dados tornaram praticamente impossível tratar a anonimização como um processo estático e definitivo' e Citron (2022): 'o caráter automatizado de um sistema não elimina a responsabilidade por discriminação'." },
 
-  { id: "063", title: "Oliveira (2023): LGPD já limita o tratamento de dados pela IA mesmo sem legislação específica de IA no Brasil", 
+  { id: "063", title: "Oliveira (2023): IA encontra limitações na LGPD; art. 20, §2º permite auditoria de IA para verificar discriminação", 
     tags: ["brasil", "ia", "lgpd", "dados"],
-    citacao: "A crescente utilização de dados pela IA resulta na necessidade de se fiscalizar e regrar tal conduta. A IA, apesar de inexistir legislação específica que a regulamente, encontra as suas limitações quanto ao tratamento de dados no regramento estabelecido pela LGPD. Sendo inviável a sua utilização sem o respeito a essa legislação.",
-    citacao_ref: "Oliveira, M.V.G. (2023). Tratamento de Dados pela Inteligência Artificial / Data Processing by Artificial Intelligence. Revista Foco, v.16, n.8, e2662, p.01-10. DOI: 10.54751/revistafoco.v16n8-045.",
-    body: "Oliveira demonstra que os 10 princípios do Art. 6º da LGPD (finalidade, adequação, necessidade, transparência, não discriminação, etc.) são integralmente aplicáveis ao processamento de dados por IA. Também discute o conflito entre transparência (Art. 20, §2º) e segredo comercial/industrial, e documenta caso de discriminação algorítmica (empresa de viagens multada em R\$ 7,5 milhões por preços diferenciados por geolocalização)." },
+    citacao: "'A IA, apesar de inexistir legislação específica que a regulamente, encontra as suas limitações quanto ao tratamento de dados no regramento estabelecido pela LGPD. Sendo inviável a sua utilização sem o respeito a essa legislação.' Sobre transparência, a autora afirma que 'o parágrafo segundo do artigo 20 evidencia a barreira imposta à obtenção de transparência pelo titular [...] ao limitar seu acesso à revelação de segredos comercial ou industrial', mas 'determina a possibilidade de auditar IA para verificar aspectos discriminatórios no tratamento automatizado de dados'.",
+    citacao_ref: "Oliveira, M.V.G. Tratamento de Dados pela Inteligência Artificial. Revista Foco, Curitiba, v. 16, n. 8, e2662, p. 1-10, 2023. DOI: 10.54751/revistafoco.v16n8-045.",
+    body: "Oliveira demonstra que os 10 princípios do art. 6º da LGPD são aplicáveis à IA. Um ponto: a LGPD já oferece instrumentos de controle sobre IA mesmo sem legislação específica — o art. 20, §2º permite auditoria de sistemas automatizados para verificar discriminação, ainda que o acesso à transparência plena seja limitado por segredo comercial. A autora documenta caso de condenação de empresa de viagens a R\$ 7,5 milhões por discriminação algorítmica via geolocalização." },
 
-  { id: "064", title: "Salomão (2020) — 1º Fórum FGV: VICTOR (STF) processa em 5 segundos o que levaria 1 hora manualmente", 
+  { id: "064", title: "Toffoli (STF) no 1º Fórum FGV: 85% dos processos digitalizados; VICTOR reduz de 1 hora para 5 segundos", 
     tags: ["brasil", "ia", "direito"],
-    citacao: "O projeto VICTOR (STF): o que antes exigiria dedicação de quase uma hora de uma pessoa ou grupo, a IA resolve em cerca de 5 segundos, identificando se aquela demanda tem repercussão geral reconhecida. 85% dos processos do Judiciário estão em plataformas digitais — um volume inédito no mundo.",
-    citacao_ref: "Salomão, L.F. (org.) (2020). Anais do 1º Fórum de Direito e Tecnologia — Artificial Intelligence Applied to Conflict Management in the Judiciary Scope. FGV/CIAPJ. ISBN 978-65-86289-14-5.",
-    body: "O Fórum FGV 2020 documenta o estado da arte da IA no Judiciário brasileiro há época: VICTOR (STF) para triagem de repercussão geral, plataforma Synapse e ferramenta Codex (CNJ) para extração de metadados, e a Carta Ética Europeia (CEPEJ) como referência regulatória. Toffoli e Humberto Martins participaram dos painéis." },
+    citacao: "'85% dos processos do Judiciário estão em plataformas digitais. Um volume inédito no mundo.' Sobre o VICTOR: 'o que antes exigiria dedicação de quase uma hora de uma pessoa ou grupo, a IA resolve em cerca de 5 segundos, identificando se aquela demanda tem repercussão geral reconhecida.' Humberto Martins (STJ/CNJ) afirmou: 'a extração de conhecimento gerado pelo machine learning requer análise de dados. Quanto maior a quantidade de dados, mais insumos para modelos de IA. Por outro lado, a legislação impõe responsabilidade institucional de tratamento cuidadoso dos dados'.",
+    citacao_ref: "Salomão, L.F. (org.). Anais do 1º Fórum de Direito e Tecnologia — Artificial Intelligence Applied to Conflict Management in the Judiciary Scope. Rio de Janeiro: FGV/CIAPJ, 2020. ISBN 978-65-86289-14-5.",
+    body: "Anais do 1º Fórum de Direito e Tecnologia da FGV (2020), com participação de Toffoli (STF), Humberto Martins (STJ/CNJ), Dierle Nunes e outros. Documenta que o Brasil já tinha 85% dos processos digitalizados e o VICTOR como ferramenta de triagem. Humberto Martins destaca a tensão entre volume de dados para treinar IA e a responsabilidade institucional de tratamento cuidadoso. O Brasil se baseava na Carta Ética Europeia (CEPEJ) por não ter parâmetro nacional." },
 
   { id: "065", title: "Araujo et al. (2022) — MPT: EC 115/2022 eleva proteção de dados a direito fundamental; discriminação algorítmica nas relações de trabalho", 
     tags: ["brasil", "direito", "dados", "advocacia"],
     citacao: "A proteção dos dados pessoais, inclusive nos meios digitais, foi recentemente erigida a status constitucional, ao ser incluída no rol do artigo 5º da Constituição Federal de 1988, por meio da EC nº 115/2022. Vive-se a 'Era da Algocracia', orientados, impulsionados e influenciados pelo uso exacerbado de algoritmos e decisões automatizadas.",
     citacao_ref: "Araujo, A.R. et al. (coord.) (2022). O Uso de Dados Pessoais e Inteligência Artificial na Relação de Trabalho: Proteção, Discriminação, Violência e Assédio Digital. Brasília: Ministério Público do Trabalho. ISBN 978-65-89468-23-3.",
-    body: "Coletânea do MPT com 17 artigos sobre discriminação algorítmica no trabalho. Destaques: caso Amazon (2018) com viés de gênero em recrutamento, caso Xsolla (demissões por scoring algorítmico), análise do Art. 20 da LGPD vs. silêncio da CLT sobre decisões automatizadas, e exigência de princípios FATE (fairness, accuracy, transparency, ethics) nas relações trabalhistas." },
-
-  { id: "066", title: "Paiva Gabriel, Porto & Araújo (2025): Resolução CNJ 615/2025 é marco regulatório mas carece de enforcement e transparência algorítmica", 
-    tags: ["brasil", "ia", "direito", "regulacao"],
-    citacao: "O artigo analisa criticamente a Resolução CNJ nº 615/2025, destacando seu papel inovador na regulamentação do uso de inteligência artificial no Poder Judiciário, mas aponta que 'a efetividade da resolução depende de mecanismos concretos de fiscalização que ainda não foram implementados' e que 'a transparência algorítmica permanece como lacuna central do texto regulatório'.",
-    citacao_ref: "Paiva Gabriel, A. de; Porto, F.R.; Araújo, V.S. de. Inteligência artificial e a Resolução CNJ 615/2025. Revista da EMERJ, Rio de Janeiro, v. 27, p. 1-17, 2025. DOI: 10.70622/2236-8957.2025.649. Citado por 2.",
-    body: "Artigo publicado em julho/2025 na Revista da EMERJ (Qualis). Os autores identificam como vulnerabilidades da Resolução: (i) ausência de padronização de métricas de auditoria para sistemas de IA nos tribunais; (ii) delegação implícita de responsabilidade aos tribunais sem definição de standards mínimos; (iii) inexistência de sanções para descumprimento; (iv) lacuna quanto à transparência dos algoritmos utilizados — especialmente os modelos proprietários de big techs; (v) falta de previsão de auditoria externa independente. Permitindo verificar que, mesmo um ano após a publicação, a Resolução ainda carece de regulamentação complementar." },
-
-  { id: "067", title: "Reichelt (2026): CNJ 615/2025 autoriza IA como suporte à decisão mas veda delegação do julgamento; tensão com o devido processo legal", 
-    tags: ["brasil", "ia", "direito"],
-    citacao: "A Resolução CNJ nº 615/2025 regula o uso de inteligência artificial 'em apoio à atividade de prolação de decisões judiciais', estabelecendo que 'a IA é instrumento de suporte sob estrita supervisão humana, sendo vedada a delegação da decisão final'. O estudo aponta que 'a supervisão humana genérica pode ser insuficiente para garantir o devido processo legal diante da opacidade dos modelos de IA generativa'.",
-    citacao_ref: "Reichelt, L.A. A Resolução CNJ nº 615/2025 e o emprego de inteligência artificial com vistas à prolação de decisões judiciais no direito processual civil. Revista Eletrônica de Direito Processual (REDP), UERJ, v. 27, 2026. Disponível em: ResearchGate, mai. 2026.",
-    body: "Reichelt analisa a tensão entre a autorização da CNJ 615 para uso de IA na prolação de decisões e as garantias constitucionais do devido processo legal. Vulnerabilidades identificadas: (i) a mera previsão de 'supervisão humana' não resolve o problema da caixa-preta dos LLMs — o juiz supervisor pode não ter condições técnicas de detectar erros ou vieses; (ii) a resolução silencia sobre responsabilidade civil por decisões assistidas por IA; (iii) não há obrigatoriedade de registro público de quando e como a IA foi usada em cada decisão; (iv) a tensão entre eficiência (automação) e garantias processuais (contraditório, ampla defesa) permanece não resolvida. Relevante para demonstrar que a CNJ 615, embora necessária, não resolve as questões estruturais de soberania e due process." },
-
-  { id: "068", title: "Siqueira (2026): Artificial Intelligence in Brazilian Courts — mapeamento das ferramentas de IA no Judiciário", 
-    tags: ["brasil", "ia", "direito"],
-    citacao: "Mapeamento das ferramentas de inteligência artificial em operação nos tribunais brasileiros, incluindo VICTOR (STF), Sócrates (STJ), RADAR (TJMG), MarIA (STF), JuLIA (TJPI) e outras, analisando sua conformidade com a Resolução CNJ 615/2025.",
-    citacao_ref: "Siqueira, D.P. (2026). Artificial Intelligence in Brazilian Courts. REMUNOM — Unified Journals Network. Disponível em: remunom.ojsbr.com.",
-    body: "Levantamento acadêmico de 2026 que cataloga as ferramentas de IA em operação no Judiciário brasileiro. Permite verificar se as determinações da CNJ 615 estão sendo cumpridas na prática e quais tribunais se adaptaram." },
-
-  { id: "069", title: "ConJur (22 maio 2026): Resolução do CNJ sobre IA precisa ir além da supervisão humana genérica", 
-    tags: ["brasil", "ia", "regulacao"],
-    citacao: "Com a consolidação da IA Generativa, a discussão evoluiu da viabilidade técnica para a necessidade de supervisão rigorosa, indo além da supervisão humana genérica para estabelecer deveres específicos de revisão. A Resolução nº 615/2025 precisa avançar além da previsão genérica de supervisão humana.",
-    citacao_ref: "Consultor Jurídico. Resolução do CNJ sobre IA precisa ir além da supervisão humana genérica. 22 maio 2026. Disponível em: conjur.com.br/2026-mai-22.",
-    body: "Artigo de 22 de maio de 2026 (6 dias atrás) que critica a abordagem da CNJ 615 por sua previsão genérica de supervisão humana. Argumenta que a IA generativa exige deveres específicos de revisão, não apenas cláusulas genéricas. Relevante para demonstrar que a resolução já é considerada insuficiente pela doutrina." },
-
-  { id: "070", title: "ANPD (2025-2026): transição da 'era da orientação' para fiscalização efetiva; superagência com poder de polícia", 
-    tags: ["lgpd", "brasil", "dados"],
-    citacao: "A ANPD anunciou em junho de 2025 que a 'era da orientação acabou' e que novas sanções estão em curso. Em maio de 2026, a ANPD tornou-se superagência com poder de polícia para fiscalizar big techs, incluindo avaliação de remoção de conteúdo e aplicação de multas.",
-    citacao_ref: "Poder360. ANPD vira superagência sob Lula e tem poder de polícia contra big techs. 20 maio 2026. Tratum. LGPD em 2026: Novas Regras e Fiscalização da ANPD. 19 maio 2026.",
-    body: "Mudança significativa no enforcement da LGPD: a ANPD passou de postura predominantemente orientativa (2020-2024) para fiscalização ativa a partir de meados de 2025, culminando com a transformação em superagência em maio de 2026. Este dado atualiza o achado #018 e mostra que o cenário de enforcement está em transformação." },
-
-  { id: "071", title: "PL 2338/2023: prioridade na Câmara em 2026, aguarda Comissão Especial", 
-    tags: ["brasil", "ia", "regulacao"],
-    citacao: "O PL 2.338/2023 (Marco Legal da Inteligência Artificial) tramita na Câmara dos Deputados aguardando parecer na Comissão Especial. O projeto é considerado prioridade legislativa para 2026, mas segue sem data definida para votação em plenário. O texto, aprovado no Senado em 2024, estabelece classificação de risco, direitos dos afetados e governança de IA.",
-    citacao_ref: "Câmara dos Deputados. PL 2338/2023 — Ficha de Tramitação. Acesso em maio/2026. Valor Econômico. Governança de IA avança com pressão regulatória. 20 abr. 2026.",
-    body: "Situação atualizada do principal projeto de regulação de IA no Brasil. O projeto está parado na Câmara desde março de 2025. Enquanto isso, o EU AI Act já está em vigor e sistemas de IA jurídica são comercializados sem regulamentação específica. Relevante para a tese de vácuo regulatório." }
+    body: "Coletânea do MPT com 17 artigos sobre discriminação algorítmica no trabalho. Destaques: caso Amazon (2018) com viés de gênero em recrutamento, caso Xsolla (demissões por scoring algorítmico), análise do Art. 20 da LGPD vs. silêncio da CLT sobre decisões automatizadas, e exigência de princípios FATE (fairness, accuracy, transparency, ethics) nas relações trabalhistas." }
 ];
 
 // Extract unique tags

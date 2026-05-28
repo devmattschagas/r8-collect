@@ -243,7 +243,7 @@
   <header>
     <h1>IA, SOLO & LEI</h1>
     <div class="subtitle">Lista de Achados — Pesquisa para Artigo CBDI 2026</div>
-    <div class="counter" id="resultCount">69 achados</div>
+    <div class="counter" id="resultCount">77 achados</div>
   </header>
 
   <div class="search-box">
@@ -256,7 +256,7 @@
   <div class="findings" id="findingsList"></div>
   
   <div class="footer">
-    <span class="result-count" id="footerCount">69 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
+    <span class="result-count" id="footerCount">77 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
   </div>
 </div>
 
@@ -675,7 +675,56 @@ const findings = [
     citacao: "'A implementacao de inteligencia artificial no Poder Judiciario brasileiro de 2019 a 2026 representa processo de transformacao institucional significativa.' Os autores documentam 'o crescimento de 140 projetos em operacao, distribuido entre 62 orgaos judiciarios, com representacao em todos os ramos de Justica, indica capilarizacao genuina de inovacao tecnologica.' Sobre alucinacoes: 'este fenomeno de geracao de informacoes falsas (denominado alucinacao) constitui limitacao fundamental ainda nao completamente resolvida em sistemas de IA generativa atuais.' Sobre vieses: 'proibicao normativa e condicao necessaria, mas nao suficiente; e imperativo que instituicoes implementem procedimentos tecnicos robustos de auditoria de vieses.' Os desafios incluem 'escassez de profissionais qualificados, risco de alucinacoes e disseminacao de informacoes falsas, possibilidade de vieses algoritmicos, questoes de governanca de dados'.",
     citacao_ref: 'Siqueira, D.P.; Cardin, V.S.G.; Saldanha, R.R. Artificial Intelligence in Brazilian Courts. REMUNOM, Sao Luis, v. 13, n. 04, p. 1-43, 2026. DOI: 10.66104/8022t344.',
     body: 'Artigo mais abrangente ja publicado sobre IA no Judiciario brasileiro, analisando 10 projetos principais (Victor, JuLIA, Hannah, STJ Logos, LexIA, ELIS, Projeto Larry, HORUS/AMON/TOTH, Socrates/Athos, Assistente TJMG). Reducao de ate 95% em tempo de processamento, aumento de 67% em execucoes finalizadas. Porem, sucesso nao pode ser medido exclusivamente por eficiencia — deve incorporar "avaliacao de impactos sobre direitos fundamentais, equidade processual e legitimidade democratica". A CNJ 615 e descrita como "progressao significativa" em relacao a CNJ 332/2020, mas a ausencia de metricas objetivas de auditoria de vieses e o risco de alucinacoes (caso concreto REsp 2.207.929/MG, STJ 2025) sao lacunas.' }
+
+  { id: "070", title: 'Melo (2026) — ANPD enfrenta obstaculos estruturais, orcamentarios e de autonomia decisoria', 
+    tags: ["brasil", "dados", "regulacao"],
+    citacao: "'a atuacao da ANPD enfrenta obstaculos estruturais, orcamentarios e de autonomia decisoria, os quais limitam sua capacidade de garantir, de forma plena, o direito fundamental a protecao de dados no Brasil.' O autor conclui que, 'embora a LGPD represente importante marco normativo', as restricoes da ANPD comprometem sua eficacia fiscalizatoria.",
+    citacao_ref: 'Melo, G.P.F. A Efetividade da LGPD na Garantia do Direito Fundamental a Protecao de Dados: Uma Analise do Papel Fiscalizador da ANPD. Revista Ibero-Americana de Humanidades, Ciencias e Educacao, Sao Paulo, v. 12, n. 4, p. 1-22, abr. 2026. DOI: 10.51891/rease.v12i4.25624.',
+    body: 'Melo analisa o papel fiscalizador da ANPD e identifica tres obstaculos centrais: estruturais (falta de pessoal e infraestrutura), orcamentarios (recursos insuficientes) e de autonomia decisoria (vinculacao ao Poder Executivo). O estudo e diretamente relevante para o ponto 3 do artigo (problemas que a soberania digital enfrenta), pois documenta que a principal autoridade de protecao de dados brasileira nao tem condicoes estruturais de exercer seu poder de policia contra big techs estrangeiras.' },
+
+  { id: "071", title: 'SBSeg/APDados (2025) — LGPD enfrenta desafios de compliance; ANPD com dificuldade para processar volume de violacoes', 
+    tags: ["brasil", "dados", "regulacao"],
+    citacao: "'a ANPD vem enfrentando desafios em relacao a quantidade crescente de processos relacionados a violacoes da LGPD no Brasil, colocando pressao sobre o sistema regulatorio.' O estudo quantitativo analisa a base APDados (2020-2024) e conclui que 'a aplicacao da LGPD nao tem sido homogenea em todas as organizacoes'.",
+    citacao_ref: 'Autores diversos. Aplicacao e Compliance da LGPD: Uma analise a partir da base de dados APDados no periodo de 2020 a 2024. In: Anais Estendidos do SBSeg 2025 — WTICG, 2025. DOI: 10.5753/sbseg_estendido.2025.10725.',
+    body: 'Artigo apresentado no SBSeg 2025 (Simposio Brasileiro de Seguranca da Informacao e de Sistemas Computacionais) que analisa quantitativamente a base APDados — banco de dados publico da ANPD com todos os processos administrativos sancionadores. Documenta que o aumento de violacoes de dados pressiona o sistema regulatorio e que a fiscalizacao da ANPD nao acompanha o ritmo.' },
+
+  { id: "072", title: 'Primeira multa ANPD (2024) — primeiro caso concreto de sancao; caracter pedagogico vs. efetividade', 
+    tags: ["brasil", "dados", "regulacao"],
+    citacao: "'a aplicacao da primeira multa sancionatoria pela Autoridade Nacional de Protecao de Dados representa um marco significativo na implementacao efetiva da politica publica de protecao de dados pessoais.' O artigo enfatiza 'a importancia de manter o carater pedagogico da sancao para que ocorra a implementacao eficaz'.",
+    citacao_ref: 'Autores. Um Marco Significativo na Implementacao Efetiva da Politica Publica de Protecao de Dados Pessoais: A Primeira Multa Aplicada pela ANPD. Revista de Direito, Estado e Sociedade, v. 9, n. 2, 2024. DOI: 10.26668/indexlawjournals/2525-9881/2023.v9i2.10058.',
+    body: 'Analisa o primeiro caso de multa aplicada pela ANPD (Relatorio de Instrucao no 1/2023/CGF/ANPD, processo sancionador contra a Telekall Infoservice). O artigo documenta que a ANPD priorizou o carater pedagogico da sancao, mas levanta a questao central: se a abordagem educativa e suficiente para big techs que faturam bilhoes. Relevante para contrapor a leitura de que a ANPD "nao faz nada" — ela fez, mas de forma limitada.' },
+
+  { id: "073", title: 'Modanez (2026) — Cloud Act como "imperialismo juridico digital"; CLOUD Act amplia acesso a dados independentemente da localizacao', 
+    tags: ["internacional", "dados", "soberania"],
+    citacao: "'O Cloud Act ampliou a capacidade do governo norte-americano de requisitar dados armazenados globalmente por empresas sob sua jurisdicao, independentemente da localizacao fisica dos servidores, configurando um mecanismo de imperialismo juridico digital e de erosao da soberania informacional de outros Estados.'",
+    citacao_ref: 'Modanez, C.C. Blindagem Juridica e Soberania Digital: A Estrategia Chinesa diante do Cloud Act dos EUA. BRICS Strategy and Technology Review, v. 1, n. 1, 2026. DOI: 10.65895/bstr.v1n1.7.',
+    body: 'Modanez (FESPSP) analisa a estrategia chinesa de blindagem juridica frente ao Cloud Act. O conceito de "imperialismo juridico digital" e diretamente viavel para o artigo: a tese de que o Cloud Act nao e apenas uma lei de acesso a dados, mas um instrumento de projecao de soberania dos EUA sobre dados armazenados em qualquer territorio. Embora o foco seja China, o marco teorico se aplica integralmente ao Brasil, que nao possui legislacao equivalente de data residency ou blindagem juridica.' },
+
+  { id: "074", title: 'Freire (2025) — soberania digital brasileira enfrenta desafios constitucionais frente ao poder transnacional das big techs', 
+    tags: ["brasil", "dados", "soberania"],
+    citacao: "'O trabalho apresentado versa sobre os desafios que o Brasil enfrenta para conquistar sua soberania digital frente ao poder transnacional das grandes empresas de tecnologia, conhecidas como big techs.' A autora analisa as GAFAM (Google, Apple, Facebook/Meta, Amazon, Microsoft) e sua influencia sobre a autonomia digital brasileira.",
+    citacao_ref: 'Freire, S.N.R. Soberania Digital e Direitos Fundamentais: Desafios Constitucionais Frente ao Poder das Big Techs no Brasil. Revista Disserata, Rio de Janeiro, v. 2, n. 2, e220020, jan./dez. 2025. DOI: 10.63160/3085-6892.2025.37.',
+    body: 'Freire (UVA) mapeia os desafios constitucionais para a soberania digital brasileira diante do dominio das big techs. A contribuicao especifica: documenta que a dependencia de infraestrutura digital estrangeira cria uma vulnerabilidade juridico-constitucional que a LGPD, por si so, nao resolve. Relevante para fundamentar que a soberania digital nao e apenas questao de lei, mas de capacidade tecnologica e infraestrutura.' },
+
+  { id: "075", title: 'Veras & Lelis (2026) — CNJ 615 incorpora parametros eticos internacionais; efetividade depende de implementacao pratica', 
+    tags: ["brasil", "ia", "direito"],
+    citacao: "'A resolucao incorpora, de forma substancial, os principais parametros eticos internacionais para o uso responsavel da inteligencia artificial no servico judiciario, revelando potencial normativo relevante para a salvaguarda da dignidade humana dos jurisdicionados, desde que suas disposicoes sejam efetivamente observadas e implementadas na pratica institucional.'",
+    citacao_ref: 'Veras, F.A.; Lelis, H.R. A Resolucao CNJ no 615/2025: Os Algoritmos e a Dignidade Humana. RIAHCE, v. 12, n. 1, 2026. DOI: 10.51891/rease.v12i1.24015.',
+    body: 'Veras e Lelis fazem analise de conformidade entre a CNJ 615 e os parametros eticos internacionais (UNESCO, OCDE, CEPEJ). Concluem que a resolucao esta alinhada, mas com uma ressalva crucial: "desde que suas disposicoes sejam efetivamente observadas e implementadas na pratica". Essa condicional e o cerne do problema — a norma existe, mas a fiscalizacao do cumprimento e o monitoramento sao lacunas que persistem.' },
+
+  { id: "076", title: 'Santos & Coelho (2025) — desconexao entre diretrizes CNJ 615 e realidade empirica dos tribunais; auditorias regionais sao insuficientes', 
+    tags: ["brasil", "ia", "direito", "regulacao"],
+    citacao: "'A pesquisa aborda o problema da desconexao entre as diretrizes normativas e a realidade empirica, evidenciada por lacunas na implementacao pratica e governanca da IA no Poder Judiciario, o que compromete principios eticos.' Os resultados revelam que 'desafios persistem, exigindo politicas obrigatorias, acessos institucionais e auditorias regionais'.",
+    citacao_ref: 'Santos, J.C.V.; Coelho, V.L. Inteligencia Artificial en el Poder Judicial Brasileiro: Etica, Supervision y los Desafios de la Resolucion 615/2025 del CNJ. ERR01, Sao Jose dos Pinhais, v. 10, n. 6, p. 1-17, 2025. DOI: 10.56238/err01v10n6-051.',
+    body: 'Artigo que confronta as diretrizes da CNJ 615 com os dados do relatorio "Pesquisa Inteligencia Artificial no Judiciario 2024" do CNJ. A constatacao central e que existe um abismo entre o que a resolucao determina e o que realmente ocorre nos tribunais. A analise do caso Zeus IA (TJPA) ilustra como projetos bem-sucedidos convivem com ausencia de governanca sistemica. Reforca o argumento de que a norma, por si so, nao transforma a realidade.' },
+
+  { id: "077", title: 'Pinho & Lima Neto (2026) — LLMs operam por reproducao probabilistica de padroes, sem compreensao semântica; incompatibilidade com substituicao do julgador', 
+    tags: ["brasil", "ia", "direito"],
+    citacao: "'tais sistemas, embora produzam respostas linguisticamente sofisticadas, operam por reproducao probabilistica de padroes, sem compreensao semântica genuina, deliberacao consciente ou raciocinio juridico em sentido proprio.' Os autores concluem que 'a inteligencia artificial pode atuar validamente como ferramenta de apoio a atividade judicial, mas nao como instância autonoma de deliberacao, fundamentacao ou julgamento'.",
+    citacao_ref: 'Pinho, D.A.; Lima Neto, F.V. O Uso de Inteligencia Artificial nas Decisoes Judiciais a Luz da Resolucao CNJ no 615/2025. Cadernos Cajuina, v. 11, n. 4, 2026. DOI: 10.52641/cadcajv11i4.2454.',
+    body: 'Pinho (UFES) e Lima Neto examinam a incompatibilidade tecnica entre LLMs e a teoria processual da decisao. O artigo e relevante por demonstrar que a limitacao nao e apenas juridica ou etica, mas epistemologica: LLMs nao "pensam" ou "raciocinam", apenas reproduzem probabilidades. Isso fortalece a tese de que a supervisao humana prevista na CNJ 615 pode ser insuficiente quando o juiz nao compreende a natureza do instrumento que usa.' }
 ];
+
 
 // Extract unique tags
 const allTags = [...new Set(findings.flatMap(f => f.tags))].sort();

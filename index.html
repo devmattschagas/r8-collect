@@ -243,7 +243,7 @@
   <header>
     <h1>IA, SOLO & LEI</h1>
     <div class="subtitle">Lista de Achados — Pesquisa para Artigo CBDI 2026</div>
-    <div class="counter" id="resultCount">60 achados</div>
+    <div class="counter" id="resultCount">65 achados</div>
   </header>
 
   <div class="search-box">
@@ -256,7 +256,7 @@
   <div class="findings" id="findingsList"></div>
   
   <div class="footer">
-    <span class="result-count" id="footerCount">60 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
+    <span class="result-count" id="footerCount">65 achados — EXPOSIÇÃO DE DADOS: RELEVÂNCIA DA PROTEÇÃO DE DADOS E O USO DA IA NO JUDICIÁRIO</span>
   </div>
 </div>
 
@@ -286,11 +286,11 @@ const findings = [
     citacao_ref: "CLOUD Act (Clarifying Lawful Overseas Use of Data Act), 18 U.S.C. § 2523. 2018.",
     body: "Conflito direto com a LGPD e o princípio de soberania de dados. Um provedor americano (Google, AWS, Microsoft) operando no Brasil pode ser legalmente obrigado a entregar dados de cidadãos brasileiros ao governo americano, sem passar pela autoridade judiciária brasileira — o que questiona a efetividade da territorialidade da LGPD." },
     
-  { id: "005", title: "ANPD não possui competência para fiscalizar provedores estrangeiros que operam via filiais brasileiras", 
-    tags: ["lgpd", "brasil", "soberania"],
-    citacao: "A estrutura atual da ANPD — composta por apenas 108 servidores efetivos (2024) — é insuficiente para fiscalizar a conformidade de mais de 40 mil empresas com a LGPD, e não possui mecanismos efetivos para alcançar provedores estrangeiros.",
+  { id: "005", title: "ANPD conta com apenas 108 servidores efetivos (2024) para fiscalizar mais de 40 mil empresas", 
+    tags: ["lgpd", "brasil"],
+    citacao: "A estrutura atual da ANPD é composta por apenas 108 servidores efetivos (2024).",
     citacao_ref: "ANPD. Relatório de Gestão 2023-2024. Brasília: ANPD, 2024.",
-    body: "Limitação estrutural grave: a ANPD não tem braço internacional nem acordos de cooperação que permitam fiscalizar efetivamente dados processados por big techs em servidores no exterior." },
+    body: "Interpretação: este contingente reduzido sugere dificuldade de fiscalizar provedores estrangeiros, mas o relatório da ANPD não afirma expressamente falta de competência legal. A análise sobre insuficiência de recursos para fiscalização de big techs é construção dos autores do artigo, baseada nos dados objetivos do relatório." },
     
   { id: "006", title: "Advogados subestimam significativamente o risco de violação de dados em ferramentas de IA", 
     tags: ["advocacia", "ia", "dados"],
@@ -301,8 +301,8 @@ const findings = [
   { id: "007", title: "Ferramentas de monitoramento de IA operam sem consentimento explícito dos usuários finais", 
     tags: ["monitoramento", "dados", "lgpd"],
     citacao: "Sistemas de AI governance e employee monitoring frequentemente coletam dados de desempenho, comunicação e comportamento sem consentimento explícito, baseando-se em 'legítimo interesse' como fundamento legal — fundamento este questionável quando aplicado a ferramentas de IA utilizadas por profissionais liberais.",
-    citacao_ref: "Congressional Research Service (2024). FISA Section 702 and the 2024 Reforming Intelligence and Securing America Act. CRS Report R47921.",
-    body: "Grey area legal: ferramentas de AI governance nos escritórios podem estar coletando muito mais dados do que o necessário para o serviço contratado, sem transparência adequada. A base de 'legítimo interesse' da LGPD é frequentemente usada de forma abusiva." },
+    citacao_ref: "Brealey, T. et al. (2024). SafeGPT: Safety Evaluation of GPT-Based Legal Tools. IEEE Access, 12, 15678-15695; Citron, D.K. & Pasquale, F. (2014). The Scored Society. Washington Law Review, 89(1), 1-34.",
+    body: "Análise dos autores: o regime de consentimento para ferramentas de AI governance que monitoram profissionais liberais é nebuloso. Citron & Pasquale (2014) demonstram que sistemas automatizados de pontuação carecem de due process. SafeGPT (2024) confirma que 82% dos advogados ignoram onde seus dados são processados. A conexão entre monitoramento de IA e violação de consentimento é construção analítica dos autores, não constatação direta das fontes citadas." },
     
   { id: "008", title: "Princípios da OCDE para IA exigem transparência e prestação de contas, mas não têm força vinculante", 
     tags: ["ia", "regulacao", "europa"],
@@ -314,13 +314,13 @@ const findings = [
     tags: ["europa", "ia", "regulacao"],
     citacao: "O EU AI Act (2024) classifica como 'alto risco' sistemas de IA utilizados para 'interpretação e aplicação da lei' (Anexo III, ponto 8), exigindo avaliação de conformidade, documentação técnica e supervisão humana obrigatória antes da colocação no mercado.",
     citacao_ref: "Regulation (EU) 2024/1689 (EU AI Act). Annex III, Section 8. June 2024.",
-    body: "Paradigma regulatório que o Brasil ainda não possui. O PL 2338/2023 é inspirado no EU AI Act mas está parado no Congresso. Enquanto isso, ferramentas de IA jurídicas já são comercializadas sem qualquer avaliação de conformidade prévia no país." },
+    body: "Paradigma regulatório que o Brasil ainda não possui. O PL 2338/2023 é inspirado no EU AI Act mas ainda não foi aprovado. Enquanto isso, ferramentas de IA jurídicas já são comercializadas sem qualquer avaliação de conformidade prévia no país." },
     
-  { id: "010", title: "Brasil não possui regulação específica para IA no Judiciário além de resoluções internas do CNJ", 
+  { id: "010", title: "Resolução CNJ 615/2024: primeiras diretrizes para IA no Judiciário, com lacunas em soberania de dados", 
     tags: ["brasil", "ia", "regulacao", "direito"],
-    citacao: "Resolução CNJ Nº 615/2024 estabelece diretrizes para uso de IA no Judiciário — não exige data residency, não regula chaves criptográficas, e não enfrenta o conflito com o CLOUD Act.",
+    citacao: "Resolução CNJ Nº 615/2024 estabelece diretrizes para o uso de IA no Poder Judiciário, incluindo transparência, supervisão humana e não discriminação.",
     citacao_ref: "Conselho Nacional de Justiça. Resolução Nº 615 de 13/12/2024. Diretrizes para o uso de IA no Poder Judiciário.",
-    body: "Vácuo normativo: a Resolução CNJ 615 é o único instrumento sobre IA no Judiciário brasileiro, e é uma norma infralegal sem força de lei. Não trata de soberania de dados, criptografia, nem auditoria de modelos. Escritórios de advocacia ficam ainda mais descobertos — nem resolução têm." },
+    body: "Lacuna identificada pela análise do texto da Resolução: a norma não trata de data residency, controle de chaves criptográficas, nem do conflito com o CLOUD Act. A Resolução CNJ 615 é o único instrumento sobre IA no Judiciário brasileiro, e é norma infralegal sem força de lei. Escritórios de advocacia ficam ainda mais descobertos — nem resolução têm." },
     
   { id: "011", title: "Escritórios de advocacia brasileiros utilizam ferramentas de IA sem política de governança de dados formalizada", 
     tags: ["advocacia", "ia", "dados", "brasil"],
@@ -349,8 +349,8 @@ const findings = [
   { id: "015", title: "Serviços de cloud computing de big techs retêm chaves de criptografia, permitindo acesso técnico a dados", 
     tags: ["soberania", "dados", "monitoramento", "eua"],
     citacao: "Provedores de cloud (AWS, Google Cloud, Microsoft Azure) mantêm controle sobre as chaves de criptografia em seus modelos padrão de serviço — exceto quando o cliente implementa soluções de 'bring your own key' (BYOK), que ainda dependem do HSM do provedor.",
-    citacao_ref: "Contratos de serviço AWS KMS, Google Cloud KMS, Microsoft Azure Key Vault; Lopes, S. (2022). Boletim SBDI.",
-    body: "Ponto crítico para a tese de 'territorialidade de fato': mesmo dados criptografados em repouso na nuvem estão tecnicamente acessíveis ao provedor. O Brasil não regula o controle de chaves criptográficas — diferentemente de países como Rússia e China, que exigem chaves depositadas em território nacional." },
+    citacao_ref: "Documentação técnica AWS KMS, Google Cloud KMS, Microsoft Azure Key Vault. Nota: esta afirmação baseia-se em conhecimento técnico geral sobre modelos de serviço em nuvem (IaaS/PaaS/SaaS) e documentação pública dos provedores, não em análise contratual específica.",
+    body: "Ponto crítico para a tese de 'territorialidade de fato': mesmo dados criptografados em repouso na nuvem estão tecnicamente acessíveis ao provedor. O Brasil não regula o controle de chaves criptográficas — diferentemente de países como Rússia e China, que exigem chaves depositadas em território nacional. A análise de impacto para a soberania brasileira é construção dos autores." },
     
   { id: "016", title: "ChatGPT 'alucina' decisões judiciais inexistentes, gerando precedentes falsos em petições", 
     tags: ["ia", "advocacia", "direito"],
@@ -373,7 +373,7 @@ const findings = [
   { id: "019", title: "Brasil não possui legislação de data residency (residência de dados)", 
     tags: ["brasil", "soberania", "dados"],
     citacao: "Diferentemente de países como Rússia (Lei 242-FZ), China (CSL) e Índia (PDPB 2023), o Brasil não exige que dados de cidadãos brasileiros sejam armazenados em território nacional — criando uma dependência estrutural de provedores estrangeiros.",
-    citacao_ref: "Lei Federal Russa 242-FZ (2015); Chinese Cybersecurity Law (2017); Indian Digital Personal Data Protection Bill (2023); Comparação no Draft do artigo (2025).",
+    citacao_ref: "Lei Federal Russa 242-FZ (2015); Chinese Cybersecurity Law (2017); Indian Digital Personal Data Protection Bill (2023).",
     body: "Lacuna legislativa crítica: sem data residency, dados de cidadãos brasileiros — incluindo dados sensíveis de processos judiciais — podem estar armazenados em servidores nos EUA, Europa ou Ásia, sujeitos a jurisdições estrangeiras. A LGPD não resolve isso." },
     
   { id: "020", title: "Alta concentração de mercado de IA jurídica em provedores americanos", 
@@ -409,7 +409,7 @@ const findings = [
   { id: "025", title: "Resolução CNJ 615 não regula algoritmos de IA nem exige auditoria externa", 
     tags: ["brasil", "ia", "direito", "regulacao"],
     citacao: "Resolução CNJ 615/2024 — 'Dispõe sobre o uso de Inteligência Artificial no Poder Judiciário' — não estabelece requisitos de auditoria algorítmica, explicabilidade de decisões, nem padrões de segurança para dados processados por sistemas de IA, limitando-se a diretrizes gerais de transparência.",
-    citacao_ref: "CNJ. Resolução 615/2024. Análise comparativa do Draft do artigo (2025).",
+    citacao_ref: "CNJ. Resolução 615/2024. Disponível em: cnj.jus.br.",
     body: "A resolução é insuficiente: não exige auditoria externa dos modelos, não estabelece padrões de segurança da informação, não trata de privacidade de dados processados por IA. É um primeiro passo, mas insuficiente para garantir a proteção efetiva de dados no Judiciário." },
     
   { id: "026", title: "Violações de dados em escritórios de advocacia cresceram 340% entre 2020 e 2024", 
@@ -421,8 +421,8 @@ const findings = [
   { id: "027", title: "Princípio da precaução (Direito Ambiental) como analogia para regulação de IA", 
     tags: ["direito", "ia", "regulacao"],
     citacao: "O princípio da precaução (Princípio 15 da Declaração do Rio/92) determina que, na ausência de certeza científica sobre riscos, devem ser adotadas medidas preventivas — analogia aplicável à IA jurídica, onde os riscos à privacidade e ao devido processo legal ainda não são plenamente conhecidos.",
-    citacao_ref: "Declaração do Rio sobre Meio Ambiente e Desenvolvimento (1992), Princípio 15; Draft do artigo (2025).",
-    body: "Proposta do draft: aplicar o princípio da precaução — já consolidado no Direito brasileiro — como fundamento para regulação cautelar de IA no setor jurídico, antes que danos irreversíveis ocorram." },
+    citacao_ref: "Declaração do Rio sobre Meio Ambiente e Desenvolvimento (1992), Princípio 15.",
+    body: "Proposta analógica dos autores: aplicar o princípio da precaução — já consolidado no Direito brasileiro — como fundamento para regulação cautelar de IA no setor jurídico, antes que danos irreversíveis ocorram. A conexão entre o princípio ambiental e a regulação de IA é construção dos autores, não constatação de fonte." },
     
   { id: "028", title: "PL 2338/2023 (Marco Legal da IA): aprovado no Senado, tramita na Câmara em 2026", 
     tags: ["brasil", "ia", "regulacao"],
@@ -457,8 +457,8 @@ const findings = [
   { id: "033", title: "Acesso a dados por autoridades estrangeiras sem autorização judicial brasileira: violação à soberania", 
     tags: ["soberania", "dados", "eua", "direito"],
     citacao: "O CLOUD Act permite que autoridades americanas exijam acesso a dados armazenados por provedores americanos mesmo quando os dados estão no exterior — sem necessidade de carta rogatória ou autorização da autoridade judiciária local, o que viola o princípio da soberania nacional (CF Art. 1º, I).",
-    citacao_ref: "CLOUD Act (2018); CF/88, Art. 1º, I (soberania); Draft do artigo (2025).",
-    body: "Ponto central da tese: a sobernia nacional afirmada no Art. 1º da CF é formalmente válida, mas factualmente violada por mecanismos legais estrangeiros (CLOUD Act, FISA 702) que permitem acesso extraterritorial a dados de brasileiros sem controle judicial brasileiro." },
+    citacao_ref: "CLOUD Act (2018), 18 U.S.C. § 2523; CF/88, Art. 1º, I (soberania).",
+    body: "Ponto central da tese: a soberania nacional afirmada no Art. 1º da CF é formalmente válida, mas factualmente violada por mecanismos legais estrangeiros (CLOUD Act, FISA 702) que permitem acesso extraterritorial a dados de brasileiros sem controle judicial brasileiro." },
     
   { id: "034", title: "CC/2002 Art. 186 e 927: responsabilidade civil objetiva do fornecedor de IA por danos a dados", 
     tags: ["direito", "dados", "ia", "brasil"],
@@ -502,23 +502,23 @@ const findings = [
     citacao_ref: "Emenda Constitucional 115/2022, Art. 5º, LXXIX.",
     body: "Base constitucional expressa. O direito à proteção de dados agora está no catálogo de direitos fundamentais. A questão que se coloca é: esse direito fundamental é efetivo (eficácia kelseniana) quando dados estão sob jurisdição estrangeira?" },
     
-  { id: "041", title: "Sociedade de risco (Beck) e IA: riscos não calculáveis exigem precaução regulatória", 
+  { id: "041", title: "Sociedade de risco (Beck) e IA: riscos não calculáveis como fundamento para precaução regulatória", 
     tags: ["direito", "ia", "regulacao"],
-    citacao: "Na 'sociedade de risco' (Beck, 1992), os riscos da tecnologia não são plenamente calculáveis ou seguráveis — o que exige uma abordagem precaucional, exatamente o oposto da abordagem 'esperar pra ver' adotada pelo Brasil na regulação de IA.",
+    citacao: "Beck (1992) desenvolve o conceito de 'sociedade de risco': na modernidade tardia, os riscos da tecnologia não são plenamente calculáveis ou seguráveis, exigindo novas formas de ação preventiva.",
     citacao_ref: "Beck, U. (1992). Risk Society: Towards a New Modernity. London: Sage; Krištofík, A. (2025). Bias in AI (Supported) Decision Making. International Journal for Court Administration, 16(1).",
-    body: "Enquadramento sociológico-jurídico: Beck explica por que a abordagem brasileira (esperar a tecnologia se consolidar para regular) é inadequada. Krištofík (2025) confirma que vieses em decisões assistidas por IA no Judiciário são riscos não calculáveis que exigem ação preventiva, não reativa." },
+    body: "Aplicação analógica do framework de Beck ao contexto da IA jurídica: assim como Beck demonstrou que riscos industriais modernos são incalculáveis, autores do artigo propõem que riscos de IA (vieses algorítmicos, violações de privacidade) têm características similares. Krištofík (2025) confirma que vieses em decisões assistidas por IA no Judiciário são riscos não calculáveis que exigem ação preventiva. A conexão entre Beck e IA é construção analítica dos autores." },
     
   { id: "042", title: "Recusa terapêutica do paciente: o direito de recusar tratamento de dados pessoais como expressão da autonomia", 
     tags: ["direito", "dados", "lgpd"],
     citacao: "Assim como o paciente tem o direito de recusar tratamento médico (CF Art. 5º, III — ninguém será submetido a tratamento desumano ou degradante; CC Art. 15), o titular de dados deve ter o direito efetivo de recusar o tratamento de seus dados pessoais por sistemas de IA — direito hoje inviabilizado pelo modelo 'take-it-or-leave-it' de adesão a plataformas.",
     citacao_ref: "CF/88 Art. 5º, III; CC/2002 Art. 15; Bioni, B. R. (2022). Proteção de Dados Pessoais: A Função e os Limites do Consentimento. Rio de Janeiro: Forense, Cap. 4.",
-    body: "Analogia entre recusa terapêutica (reconhecida pelo STJ) e recusa de tratamento de dados (não regulada). Bioni (2022) demonstra que o modelo atual de consentimento ('take-it-or-leave-it') inviabiliza o exercício real da autonomia do titular. O paciente pode recusar um tratamento médico mesmo que benéfico; o titular de dados não pode recusar efetivamente o processamento de seus dados por IA sem deixar de usar serviços essenciais." },
+    body: "Proposição dos autores: analogia entre recusa terapêutica (reconhecida pelo STJ) e recusa de tratamento de dados (não regulada). Esta é uma construção argumentativa, não um dado de fonte. Bioni (2022) demonstra que o modelo atual de consentimento ('take-it-or-leave-it') inviabiliza o exercício real da autonomia do titular, o que fundamenta a analogia proposta." },
     
   { id: "043", title: "Paradoxo regulatório: soft law internacional é seguida, hard law nacional é ignorada", 
     tags: ["regulacao", "brasil", "ia", "soberania"],
     citacao: "Empresas de tecnologia seguem voluntariamente princípios de governança de IA da OCDE e UNESCO (soft law) para reputação e acesso a mercados internacionais, enquanto descumprem sistematicamente a LGPD (hard law brasileira) — invertendo a lógica de que lei nacional deve prevalecer.",
     citacao_ref: "SafeGPT (2024); FGV Direito SP (2024); OECD AI Principles (2019); UNESCO Ethics Recommendations (2021); LGPD (2018).",
-    body: "Observação crítica: as mesmas big techs que publicam relatórios de 'Responsible AI' alinhados com princípios internacionais descumprem a LGPD sem consequências. A soft law internacional tem mais enforcement reputacional que a hard law nacional — o que revela a fraqueza da sobernia legislativa brasileira." },
+    body: "Interpretação dos autores: as mesmas big techs que publicam relatórios de 'Responsible AI' alinhados com princípios internacionais descumprem a LGPD sem consequências. A soft law internacional tem mais enforcement reputacional que a hard law nacional — o que revela a fraqueza da soberania legislativa brasileira." },
     
   { id: "044", title: "Good Governance Principles: princípio de 'accountability' exige que organizações respondam por impactos de IA, mas sem sanção em caso de descumprimento", 
     tags: ["ia", "regulacao", "europa"],
@@ -576,9 +576,9 @@ const findings = [
 
   { id: "053", title: "TJES + Gemini (Google): parceria institucional entre Judiciário brasileiro e Big Tech estrangeira", 
     tags: ["brasil", "ia", "soberania", "monitoramento"],
-    citacao: "O Tribunal de Justiça do Espírito Santo (TJES) celebrou acordo de sigilo com a Google (Gemini) para uso de IA generativa, formalizando parceria que expõe dados processuais a infraestrutura de Big Tech americana, sujeita ao CLOUD Act.",
-    citacao_ref: "TJES. Acordo de cooperação com Google/Gemini. 2025. Documento interno citado no artigo 'IA, SOLO & LEI' (no prelo).",
-    body: "Exemplo concreto da tese do artigo: um tribunal brasileiro adota IA de Big Tech estrangeira mediante acordo de sigilo — mas o sigilo contratual não substitui garantias legais contra acesso por autoridades estrangeiras (CLOUD Act, FISA 702)." },
+    citacao: "O Tribunal de Justiça do Espírito Santo (TJES) celebrou acordo de cooperação com a Google para uso de IA generativa (Gemini), formalizando parceria que envolve dados processuais em infraestrutura de Big Tech americana.",
+    citacao_ref: "TJES. Notícia institucional: 'TJES e Google firmam parceria para uso de IA'. 2025. Disponível em: tjes.jus.br.",
+    body: "Exemplo concreto da tese do artigo: um tribunal brasileiro adota IA de Big Tech estrangeira. O acordo submete dados processuais à infraestrutura de provedor americano, potencialmente sujeito ao CLOUD Act e FISA 702. Nota: a referência original a 'documento interno do artigo' foi substituída pela notícia pública do TJES." },
 
   { id: "054", title: "Reconhecimento recíproco Brasil-UE (jan/2026): adequação dos níveis de proteção de dados", 
     tags: ["brasil", "europa", "dados", "lgpd"],
@@ -620,7 +620,37 @@ const findings = [
     tags: ["direito", "ia", "regulacao"],
     citacao: "Citron e Pasquale propõem que sistemas de pontuação e predição automatizados devem observar garantias mínimas de due process: notificação, transparência dos critérios, possibilidade de contestação e supervisão humana. Tais garantias são ainda mais necessárias quando a IA é aplicada ao sistema de justiça.",
     citacao_ref: "Citron, D.K. & Pasquale, F. (2014). The Scored Society: Due Process for Automated Predictions. Washington Law Review, 89(1), 1-34.",
-    body: "Artigo seminal que estabelece o framework de 'due process algorítmico'. Citron e Pasquale argumentam que sistemas automatizados de tomada de decisão — incluindo IA jurídica — devem observar as mesmas garantias processuais exigidas do Estado. Aplicável diretamente à crítica do vácuo regulatório brasileiro." }
+    body: "Artigo seminal que estabelece o framework de 'due process algorítmico'. Citron e Pasquale argumentam que sistemas automatizados de tomada de decisão — incluindo IA jurídica — devem observar as mesmas garantias processuais exigidas do Estado. Aplicável diretamente à crítica do vácuo regulatório brasileiro." },
+
+  { id: "061", title: "Spyropoulos & Androulaki (2023): justiça preditiva e limitações do ML para decidir casos judiciais", 
+    tags: ["ia", "direito", "europa"],
+    citacao: "No estágio atual de evolução do machine learning, a dedução de resultados confiáveis quanto à 'predição' de decisões judiciais não é possível. Além disso, pesquisa mostrou que indivíduos afro-americanos receberam grau de reincidência duas vezes maior que outros grupos populacionais no sistema COMPAS — sem que esse resultado tivesse sido intencionado pelos designers.",
+    citacao_ref: "Spyropoulos, F., & Androulaki, E. (2023). Aspects of Artificial Intelligence on E-Justice and Personal Data Limitations. Journal of Legal, Ethical and Regulatory Issues, 26(3), 1-8.",
+    body: "Artigo acadêmico que examina aplicações de IA em sistemas judiciais: classificação de contratos, resolução online de disputas (ODR), chatbots para apoio a litigantes e justiça preditiva. Conclui que o ML atual não é confiável para predizer decisões judiciais e documenta o viés racial do sistema COMPAS. Também discute o direito de não estar sujeito a decisões automatizadas (GDPR Art. 22)." },
+
+  { id: "062", title: "Syllos (2024): LGPD brasileira é ambígua quanto à responsabilização de sistemas de IA; EUA possuem mosaico regulatório fragmentado", 
+    tags: ["dados", "lgpd", "eua", "regulacao"],
+    citacao: "No Brasil, a LGPD define parâmetros para coleta, tratamento e finalidade, mas permanece ambígua quanto ao escopo da responsabilização aplicada a sistemas de aprendizado de máquina que operam com bases complexas e processos inferenciais autônomos. Modelos treinados com dados pessoais continuam suscetíveis à memorização involuntária, reidentificação e impactos desiguais sobre grupos vulneráveis.",
+    citacao_ref: "Syllos, W.A.V. (2024). Interação entre Inteligência Artificial e Proteção de Dados: Regimes de Responsabilização no Brasil e nos Estados Unidos para Modelos Treinados com Dados Pessoais. Tese/Dissertação.",
+    body: "Análise comparativa Brasil vs. EUA: LGPD é ambígua sobre responsabilização de ML, enquanto os EUA carecem de lei federal abrangente. Syllos documenta casos de discriminação algorítmica (Clearview AI, Amazon, Cambridge Analytica) e propõe framework de governança, auditoria e compliance para organizações que utilizam IA em contextos sensíveis." },
+
+  { id: "063", title: "Oliveira (2023): LGPD já limita o tratamento de dados pela IA mesmo sem legislação específica de IA no Brasil", 
+    tags: ["brasil", "ia", "lgpd", "dados"],
+    citacao: "A crescente utilização de dados pela IA resulta na necessidade de se fiscalizar e regrar tal conduta. A IA, apesar de inexistir legislação específica que a regulamente, encontra as suas limitações quanto ao tratamento de dados no regramento estabelecido pela LGPD. Sendo inviável a sua utilização sem o respeito a essa legislação.",
+    citacao_ref: "Oliveira, M.V.G. (2023). Tratamento de Dados pela Inteligência Artificial / Data Processing by Artificial Intelligence. Revista Foco, v.16, n.8, e2662, p.01-10. DOI: 10.54751/revistafoco.v16n8-045.",
+    body: "Oliveira demonstra que os 10 princípios do Art. 6º da LGPD (finalidade, adequação, necessidade, transparência, não discriminação, etc.) são integralmente aplicáveis ao processamento de dados por IA. Também discute o conflito entre transparência (Art. 20, §2º) e segredo comercial/industrial, e documenta caso de discriminação algorítmica (empresa de viagens multada em R\$ 7,5 milhões por preços diferenciados por geolocalização)." },
+
+  { id: "064", title: "Salomão (2020) — 1º Fórum FGV: VICTOR (STF) processa em 5 segundos o que levaria 1 hora manualmente", 
+    tags: ["brasil", "ia", "direito"],
+    citacao: "O projeto VICTOR (STF): o que antes exigiria dedicação de quase uma hora de uma pessoa ou grupo, a IA resolve em cerca de 5 segundos, identificando se aquela demanda tem repercussão geral reconhecida. 85% dos processos do Judiciário estão em plataformas digitais — um volume inédito no mundo.",
+    citacao_ref: "Salomão, L.F. (org.) (2020). Anais do 1º Fórum de Direito e Tecnologia — Artificial Intelligence Applied to Conflict Management in the Judiciary Scope. FGV/CIAPJ. ISBN 978-65-86289-14-5.",
+    body: "O Fórum FGV 2020 documenta o estado da arte da IA no Judiciário brasileiro há época: VICTOR (STF) para triagem de repercussão geral, plataforma Synapse e ferramenta Codex (CNJ) para extração de metadados, e a Carta Ética Europeia (CEPEJ) como referência regulatória. Toffoli e Humberto Martins participaram dos painéis." },
+
+  { id: "065", title: "Araujo et al. (2022) — MPT: EC 115/2022 eleva proteção de dados a direito fundamental; discriminação algorítmica nas relações de trabalho", 
+    tags: ["brasil", "direito", "dados", "advocacia"],
+    citacao: "A proteção dos dados pessoais, inclusive nos meios digitais, foi recentemente erigida a status constitucional, ao ser incluída no rol do artigo 5º da Constituição Federal de 1988, por meio da EC nº 115/2022. Vive-se a 'Era da Algocracia', orientados, impulsionados e influenciados pelo uso exacerbado de algoritmos e decisões automatizadas.",
+    citacao_ref: "Araujo, A.R. et al. (coord.) (2022). O Uso de Dados Pessoais e Inteligência Artificial na Relação de Trabalho: Proteção, Discriminação, Violência e Assédio Digital. Brasília: Ministério Público do Trabalho. ISBN 978-65-89468-23-3.",
+    body: "Coletânea do MPT com 17 artigos sobre discriminação algorítmica no trabalho. Destaques: caso Amazon (2018) com viés de gênero em recrutamento, caso Xsolla (demissões por scoring algorítmico), análise do Art. 20 da LGPD vs. silêncio da CLT sobre decisões automatizadas, e exigência de princípios FATE (fairness, accuracy, transparency, ethics) nas relações trabalhistas." }
 ];
 
 // Extract unique tags
